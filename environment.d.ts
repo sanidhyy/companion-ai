@@ -6,6 +6,9 @@ declare global {
     interface ProcessEnv {
       // aiven db url
       DATABASE_URL: string;
+
+      // cloudinary cloud name
+      NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: string;
     }
   }
 }
