@@ -16,20 +16,20 @@ model Category {
 }
 
 model Companion {
-  id  String  @id @default(uuid())
-  userId String
-  userName String
-  source String
-  name String @db.Text
-  description String
-  instructions String @db.Text
-  seed String @db.Text
+  id            String      @id @default(uuid())
+  userId        String
+  userName      String
+  source        String
+  name          String      @db.Text
+  description   String
+  instructions  String      @db.Text
+  seed          String      @db.Text
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
   
-  categoryId String
-  category Category @relation(fields: [categoryId], references: [id])
+  categoryId    String
+  category      Category    @relation(fields: [categoryId], references: [id])
 
   @@index([categoryId])
   @@fulltext([name])
