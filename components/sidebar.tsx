@@ -51,6 +51,7 @@ export const Sidebar = () => {
             >
               <div className="flex flex-col gap-y-2 items-center flex-1">
                 <route.icon className="h-5 w-5" />
+
                 {route.label}
               </div>
             </button>
