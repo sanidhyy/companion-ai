@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import type { PropsWithChildren } from "react";
 
 import { Providers } from "@/components/providers";
+import { cn } from "@/lib/utils";
 
 import "./globals.css";
 
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={cn("bg-secondary", inter.className)}>
         <Providers>{children}</Providers>
       </body>
     </html>
