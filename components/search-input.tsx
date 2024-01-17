@@ -2,7 +2,7 @@
 
 import { Search } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { ChangeEventHandler, useEffect, useState } from "react";
+import { type ChangeEventHandler, useEffect, useState } from "react";
 import qs from "query-string";
 
 import { Input } from "@/components/ui/input";
