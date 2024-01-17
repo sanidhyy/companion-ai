@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import { CldUploadButton } from "next-cloudinary";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
+import { cn } from "@/lib/utils";
 import type { CldUploadWidgetInfo } from "@/types";
 
 type ImageUploadProps = {
@@ -23,6 +25,7 @@ export const ImageUpload = ({
   onChange,
   disabled,
 }: ImageUploadProps) => {
+  const { resolvedTheme } = useTheme();
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -34,7 +37,10 @@ export const ImageUpload = ({
   return (
     <div className="space-y-4 w-full flex flex-col justify-center items-center">
       <CldUploadButton
+        className={cn(disabled && "outline-none ring-0 select-none")}
         onUpload={(result) => {
+          if (disabled) return;
+
           if (!instanceOfCldUploadWidgetInfo(result.info))
             return console.error("[IMAGE_UPLOAD]: ", result.info);
 
@@ -45,10 +51,36 @@ export const ImageUpload = ({
         options={{
           maxFiles: 1,
           maxFileSize: 5000000, // 5mb
+          resourceType: "image",
+          clientAllowedFormats: ["image"],
+          styles:
+            resolvedTheme === "dark"
+              ? {
+                  palette: {
+                    window: "#262626",
+                    sourceBg: "#262626",
+                    windowBorder: "#A3A3A3",
+                    tabIcon: "#FFFFFF",
+                    inactiveTabIcon: "#A3A3A3",
+                    menuIcons: "#FFFFFF",
+                    link: "#FFFFFF",
+                    action: "#FFFFFF",
+                    inProgress: "#00BFFF",
+                    complete: "#33ff00",
+                    error: "#EA2727",
+                    textDark: "#262626",
+                    textLight: "#FFFFFF",
+                  },
+                }
+              : undefined,
         }}
         uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME}
       >
-        <div className="p-4 border-4 border-dashed border-primary/10 rounded-lg hover:opacity-75 transition flex flex-col space-y-2 items-center justify-center">
+        <button
+          disabled={disabled}
+          aria-disabled={disabled}
+          className="p-4 border-4 border-dashed border-primary/10 rounded-lg hover:opacity-75 transition flex flex-col space-y-2 items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+        >
           <div className="relative h-40 w-40">
             <Image
               src={value || "/placeholder.svg"}
@@ -57,7 +89,7 @@ export const ImageUpload = ({
               fill
             />
           </div>
-        </div>
+        </button>
       </CldUploadButton>
     </div>
   );
