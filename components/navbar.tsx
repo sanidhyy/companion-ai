@@ -8,6 +8,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+import { ModeToggle } from "./mode-toggle";
+
 const font = Poppins({
   weight: "600",
   subsets: ["latin"],
@@ -34,6 +36,9 @@ export const Navbar = () => {
         <Button variant="premium" size="sm">
           Upgrade <Sparkles className="h-4 w-4 fill-white text-white ml-2" />
         </Button>
+
+        <ModeToggle />
+
         <UserButton afterSignOutUrl="/" />
       </div>
     </div>
