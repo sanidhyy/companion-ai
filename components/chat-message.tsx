@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import { Copy } from "lucide-react";
 import { BeatLoader } from "react-spinners";
 import { toast } from "sonner";
 
@@ -9,7 +10,6 @@ import { cn } from "@/lib/utils";
 
 import { BotAvatar } from "./bot-avatar";
 import { UserAvatar } from "./user-avatar";
-import { Copy } from "lucide-react";
 
 export type ChatMessageProps = {
   role: "system" | "user";
