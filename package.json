@@ -22,6 +22,7 @@
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
+    "@upstash/redis": "^1.28.1",
     "ai": "^2.2.31",
     "axios": "^1.6.5",
     "class-variance-authority": "^0.7.0",
