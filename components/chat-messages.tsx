@@ -2,10 +2,10 @@
 
 import type { Companion } from "@prisma/client";
 
-import { ChatMessage } from "./chat-message";
+import { ChatMessage, type ChatMessageProps } from "./chat-message";
 
 type ChatMessagesProps = {
-  messages: any[];
+  messages: ChatMessageProps[];
   isLoading: boolean;
   companion: Companion;
 };
