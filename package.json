@@ -28,6 +28,7 @@
     "axios": "^1.6.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "langchain": "^0.1.4",
     "lucide-react": "^0.311.0",
     "next": "14.0.4",
     "next-cloudinary": "^5.19.0",
