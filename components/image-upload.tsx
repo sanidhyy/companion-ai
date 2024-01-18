@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CldUploadButton } from "next-cloudinary";
+import { CldUploadButton, type CldUploadWidgetInfo } from "next-cloudinary";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 
 import { cn } from "@/lib/utils";
-import type { CldUploadWidgetInfo } from "@/types";
 
 type ImageUploadProps = {
   value: string;
@@ -14,11 +13,11 @@ type ImageUploadProps = {
   disabled?: boolean;
 };
 
-function instanceOfCldUploadWidgetInfo(
+const instanceOfCldUploadWidgetInfo = (
   object: any
-): object is CldUploadWidgetInfo {
+): object is CldUploadWidgetInfo => {
   return "secure_url" in object;
-}
+};
 
 export const ImageUpload = ({
   value,
