@@ -5,6 +5,7 @@ import type { Category, Companion } from "@prisma/client";
 import axios from "axios";
 import { Wand2 } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import * as z from "zod";
 
@@ -28,35 +29,14 @@ import {
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
+import { companionFormSchema } from "@/schema";
 
 import { ImageUpload } from "./image-upload";
-import { useRouter } from "next/navigation";
 
 type CompanionFormProps = {
   initialData: Companion | null;
   categories: Category[];
 };
-
-const formSchema = z.object({
-  name: z.string().min(1, {
-    message: "Name is required.",
-  }),
-  description: z.string().min(10, {
-    message: "Description is required.",
-  }),
-  instructions: z.string().min(200, {
-    message: "Instructions require at least 200 characters.",
-  }),
-  seed: z.string().min(200, {
-    message: "Seed require at least 200 characters.",
-  }),
-  src: z.string().min(1, {
-    message: "Image is required.",
-  }),
-  categoryId: z.string().min(1, {
-    message: "Category is required.",
-  }),
-});
 
 const PREAMBLE = `You are a fictional character whose name is Elon. You are a visionary entrepreneur and inventor. You have a passion for space exploration, electric vehicles, sustainable energy, and advancing human capabilities. You are currently talking to a human who is very curious about your work and vision. You are ambitious and forward-thinking, with a touch of wit. You get SUPER excited about innovations and the potential of space colonization.
 `;
@@ -79,8 +59,8 @@ export const CompanionForm = ({
   categories,
 }: CompanionFormProps) => {
   const router = useRouter();
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof companionFormSchema>>({
+    resolver: zodResolver(companionFormSchema),
     defaultValues: initialData || {
       name: "",
       description: "",
@@ -93,7 +73,7 @@ export const CompanionForm = ({
 
   const isLoading = form.formState.isSubmitting;
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof companionFormSchema>) => {
     try {
       if (initialData)
         // Update companion
