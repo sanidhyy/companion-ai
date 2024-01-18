@@ -38,9 +38,12 @@ export const ChatHeader = ({ companion }: ChatHeaderProps) => {
 
   const onDelete = async () => {
     try {
-      await axios.delete(`/api/companions/${companion.id}`);
+      await axios.delete(`/api/companion/${companion.id}`);
 
       toast.success("Companion deleted successfully.");
+
+      router.refresh();
+      router.push("/");
     } catch (error: unknown) {
       console.error("[CHAT_DELETE]: ", error);
       toast.error("Something went wrong.");

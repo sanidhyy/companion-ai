@@ -1,4 +1,4 @@
-import { currentUser } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs";
 import { NextResponse, type NextRequest } from "next/server";
 import * as z from "zod";
 
@@ -50,6 +50,29 @@ export async function PATCH(
     return NextResponse.json(companion, { status: 200 });
   } catch (error: unknown) {
     console.error("[COMPANION_PATCH]: ", error);
+    return new NextResponse("Internal server error.", { status: 500 });
+  }
+}
+
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { companionId: string } }
+) {
+  try {
+    const { userId } = auth();
+
+    if (!userId) return new NextResponse("Unauthorized.", { status: 401 });
+
+    const companion = await db.companion.delete({
+      where: {
+        id: params.companionId,
+        userId,
+      },
+    });
+
+    return NextResponse.json(companion, { status: 200 });
+  } catch (error: unknown) {
+    console.error("[COMPANION_DELETE]: ", error);
     return new NextResponse("Internal server error.", { status: 500 });
   }
 }
