@@ -20,6 +20,9 @@ declare global {
 
       // open ai key
       OPENAI_API_KEY: string;
+
+      // replicate api token
+      REPLICATE_API_TOKEN: string;
     }
   }
 }
