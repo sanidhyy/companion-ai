@@ -6,6 +6,7 @@ import { Poppins } from "next/font/google";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { links } from "@/config";
 import { useProModal } from "@/hooks/use-pro-modal";
 import { cn } from "@/lib/utils";
 
@@ -51,7 +52,7 @@ export const Navbar = ({ isPro }: NavbarProps) => {
         <ModeToggle />
 
         <Link
-          href="https://github.com/sanidhyy/companion-ai"
+          href={links.sourceCode}
           target="_blank"
           rel="noreferrer noopener"
           className="mr-2"
