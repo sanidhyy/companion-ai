@@ -1,7 +1,10 @@
 "use client";
 import { useEffect, type PropsWithChildren, useState } from "react";
 
+import { Toaster } from "@/components/ui/sonner";
+
 import { ClerkThemeProvider } from "./clerk-theme-provider";
+import { ProModal } from "./pro-modal";
 import { ThemeProvider } from "./theme-provider";
 
 export const Providers = ({ children }: PropsWithChildren) => {
@@ -15,7 +18,12 @@ export const Providers = ({ children }: PropsWithChildren) => {
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <ClerkThemeProvider>{children}</ClerkThemeProvider>
+      <ClerkThemeProvider>
+        <Toaster richColors closeButton />
+        <ProModal />
+
+        {children}
+      </ClerkThemeProvider>
     </ThemeProvider>
   );
 };
