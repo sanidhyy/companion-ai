@@ -57,6 +57,7 @@ export const Navbar = ({ isPro }: NavbarProps) => {
           className="mr-2"
         >
           <Github className="h-[1.2rem] w-[1.2rem] mr-2" />
+          <span className="sr-only">Source Code</span>
         </Link>
 
         <UserButton afterSignOutUrl="/" />
