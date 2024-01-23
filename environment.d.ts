@@ -23,6 +23,9 @@ declare global {
 
       // replicate api token
       REPLICATE_API_TOKEN: string;
+
+      // stripe api secret key
+      STRIPE_API_SECRET_KEY: string;
     }
   }
 }
