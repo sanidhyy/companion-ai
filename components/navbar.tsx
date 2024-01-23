@@ -34,7 +34,7 @@ export const Navbar = ({ isPro }: NavbarProps) => {
           <h1
             className={cn(
               "hidden md:block text-xl md:text-3xl font-bold text-primary",
-              font.className
+              font.className,
             )}
           >
             companion.ai

@@ -13,7 +13,7 @@ dotenv.config({ path: `.env` });
 
 export async function POST(
   request: Request,
-  { params }: { params: { chatId: string } }
+  { params }: { params: { chatId: string } },
 ) {
   try {
     const { prompt } = await request.json();
@@ -67,16 +67,15 @@ export async function POST(
 
     // Query Pinecone
 
-    const recentChatHistory = await memoryManager.readLatestHistory(
-      companionKey
-    );
+    const recentChatHistory =
+      await memoryManager.readLatestHistory(companionKey);
 
     // Right now the preamble is included in the similarity search, but that
     // shouldn't be an issue
 
     const similarDocs = await memoryManager.vectorSearch(
       recentChatHistory,
-      companion_file_name
+      companion_file_name,
     );
 
     let relevantHistory = "";
@@ -110,9 +109,9 @@ export async function POST(
         ${relevantHistory}
 
 
-        ${recentChatHistory}\n${companion.name}:`
+        ${recentChatHistory}\n${companion.name}:`,
         )
-        .catch(console.error)
+        .catch(console.error),
     );
 
     const cleaned = resp.replaceAll(",", "");

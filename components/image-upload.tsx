@@ -14,7 +14,7 @@ type ImageUploadProps = {
 };
 
 const instanceOfCldUploadWidgetInfo = (
-  object: any
+  object: any,
 ): object is CldUploadWidgetInfo => {
   return "secure_url" in object;
 };

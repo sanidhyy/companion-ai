@@ -8,11 +8,11 @@ import { Input } from "@/components/ui/input";
 type ChatFormProps = {
   input: string;
   handleInputChange: (
-    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
   ) => void;
   onSubmit: (
     e: FormEvent<HTMLFormElement>,
-    chatRequestOptions?: ChatRequestOptions | undefined
+    chatRequestOptions?: ChatRequestOptions | undefined,
   ) => void;
   isLoading: boolean;
 };

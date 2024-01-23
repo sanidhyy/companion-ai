@@ -29,20 +29,20 @@ export class MemoryManager {
 
   public async vectorSearch(
     recentChatHistory: string,
-    companionFileName: string
+    companionFileName: string,
   ) {
     const pineconeClient = <Pinecone>this.vectorDbClient;
     const pineconeIndex = pineconeClient.Index(process.env.PINECONE_INDEX!);
 
     const vectorStore = await PineconeStore.fromExistingIndex(
       new OpenAIEmbeddings({ openAIApiKey: process.env.OPENAI_API_KEY }),
-      { pineconeIndex }
+      { pineconeIndex },
     );
 
     const similarDocs = await vectorStore
       .similaritySearch(recentChatHistory, 3, { fileName: companionFileName })
       .catch((error) =>
-        console.error("Failed to get vector search results: ", error)
+        console.error("Failed to get vector search results: ", error),
       );
 
     return similarDocs;
@@ -96,7 +96,7 @@ export class MemoryManager {
   public async seedChatHistory(
     seedContent: String,
     delimiter: string = "\n",
-    companionKey: CompanionKey
+    companionKey: CompanionKey,
   ) {
     const key = this.generateRedisCompanionKey(companionKey);
 

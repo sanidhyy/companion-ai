@@ -8,7 +8,7 @@ import { companionFormSchema } from "@/schema";
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { companionId: string } }
+  { params }: { params: { companionId: string } },
 ) {
   try {
     const body = (await req.json()) as z.infer<
@@ -60,7 +60,7 @@ export async function PATCH(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { companionId: string } }
+  { params }: { params: { companionId: string } },
 ) {
   try {
     const { userId } = auth();

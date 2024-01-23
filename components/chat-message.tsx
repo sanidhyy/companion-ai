@@ -37,7 +37,7 @@ export const ChatMessage = ({
     <div
       className={cn(
         "group flex items-start gap-x-3 py-4 w-full",
-        role === "user" && "justify-end"
+        role === "user" && "justify-end",
       )}
     >
       {role !== "user" && src && <BotAvatar src={src} />}

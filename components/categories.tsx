@@ -23,7 +23,7 @@ export const Categories = ({ data }: CategoriesProps) => {
         url: window.location.href,
         query,
       },
-      { skipNull: true }
+      { skipNull: true },
     );
 
     router.push(url);
@@ -35,7 +35,7 @@ export const Categories = ({ data }: CategoriesProps) => {
         onClick={() => onClick(undefined)}
         className={cn(
           "flex items-center text-center text-xs md:text-sm px-2 md:px-4 py-2 md:py-3 rounded-md bg-primary/10 hover:opacity-75 transition",
-          !categoryId && "bg-primary/25"
+          !categoryId && "bg-primary/25",
         )}
       >
         Newest
@@ -47,7 +47,7 @@ export const Categories = ({ data }: CategoriesProps) => {
           onClick={() => onClick(item.id)}
           className={cn(
             "flex items-center text-center text-xs md:text-sm px-2 md:px-4 py-2 md:py-3 rounded-md bg-primary/10 hover:opacity-75 transition",
-            item.id === categoryId && "bg-primary/25"
+            item.id === categoryId && "bg-primary/25",
           )}
         >
           {item.name}
