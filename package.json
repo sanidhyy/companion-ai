@@ -1,6 +1,6 @@
 {
   "name": "companion-ai",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,6 +10,69 @@
     "postinstall": "prisma generate",
     "install": "npm install --legacy-peer-deps"
   },
+  "author": {
+    "name": "Sanidhya Kumar Verma",
+    "email": "sanidhya.verma12345@gmail.com",
+    "url": "https://github.com/sanidhyy"
+  },
+  "description": "The connected workspace where better, faster work happens.",
+  "keywords": [
+    "reactjs",
+    "nextjs",
+    "netlify",
+    "react",
+    "companion",
+    "ai",
+    "shadcn",
+    "shadcn-ui",
+    "radix-ui",
+    "cn",
+    "clsx",
+    "artificial-intelligence",
+    "prisma",
+    "sonner",
+    "zustand",
+    "zod",
+    "sql",
+    "postgresql",
+    "aiven",
+    "lucide-react",
+    "next-themes",
+    "clerk-themes",
+    "clerk",
+    "postcss",
+    "prettier",
+    "react-dom",
+    "tailwindcss",
+    "tailwindcss-animate",
+    "ui/ux",
+    "js",
+    "javascript",
+    "typescript",
+    "eslint",
+    "html",
+    "css"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanidhyy/companion-aigit"
+  },
+  "homepage": "https://github.com/sanidhyy/companion-ai#readme",
+  "bugs": {
+    "url": "https://github.com/sanidhyy/companion-ai/issues",
+    "email": "sanidhya.verma12345@gmail.com"
+  },
+  "funding": [
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/sanidhy"
+    },
+    {
+      "type": "Buy me a coffee",
+      "url": "https://www.buymeacoffee.com/sanidhy"
+    }
+  ],
   "dependencies": {
     "@clerk/nextjs": "^4.29.3",
     "@clerk/themes": "^1.7.9",
