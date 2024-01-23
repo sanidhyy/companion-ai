@@ -3,12 +3,17 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import { useTheme } from "next-themes";
-import type { PropsWithChildren } from "react";
+import { useEffect, type PropsWithChildren, useState } from "react";
 
 export const ClerkThemeProvider = ({ children }: PropsWithChildren) => {
+  const [isMounted, setIsMounted] = useState(false);
   const { resolvedTheme } = useTheme();
 
-  console.log(resolvedTheme);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
 
   return (
     <ClerkProvider
