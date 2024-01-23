@@ -6,6 +6,7 @@ import { Poppins } from "next/font/google";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { useProModal } from "@/hooks/use-pro-modal";
 import { cn } from "@/lib/utils";
 
 import { MobileSidebar } from "./mobile-sidebar";
@@ -17,6 +18,8 @@ const font = Poppins({
 });
 
 export const Navbar = () => {
+  const proModal = useProModal();
+
   return (
     <div className="fixed w-full z-50 flex justify-between items-center py-2 px-4 border-b border-primary/10 bg-secondary h-16">
       <div className="flex items-center">
@@ -35,7 +38,7 @@ export const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-x-3">
-        <Button variant="premium" size="sm">
+        <Button variant="premium" size="sm" onClick={proModal.onOpen}>
           Upgrade <Sparkles className="h-4 w-4 fill-white text-white ml-2" />
         </Button>
 
