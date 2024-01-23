@@ -12,6 +12,9 @@ export const ClerkThemeProvider = ({ children }: PropsWithChildren) => {
     <ClerkProvider
       appearance={{
         baseTheme: resolvedTheme === "dark" ? dark : undefined,
+        layout: {
+          logoPlacement: "none",
+        },
       }}
     >
       {children}
