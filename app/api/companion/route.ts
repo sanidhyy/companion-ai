@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import * as z from "zod";
 
 import { db } from "@/lib/db";
+import { checkSubscription } from "@/lib/subscription";
 import { companionFormSchema } from "@/schema";
 
 export async function POST(req: NextRequest) {
@@ -23,7 +24,9 @@ export async function POST(req: NextRequest) {
     if (!src || !name || !description || !instructions || !seed || !categoryId)
       return new NextResponse("Missing required fields.", { status: 400 });
 
-    // TODO: Check for subscription
+    const isPro = await checkSubscription();
+
+    if (!isPro) new NextResponse("Pro subscription required.", { status: 403 });
 
     const companion = await db.companion.create({
       data: {
