@@ -8,6 +8,8 @@ import type { PropsWithChildren } from "react";
 export const ClerkThemeProvider = ({ children }: PropsWithChildren) => {
   const { resolvedTheme } = useTheme();
 
+  console.log(resolvedTheme);
+
   return (
     <ClerkProvider
       appearance={{
