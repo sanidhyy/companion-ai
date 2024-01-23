@@ -1,7 +1,7 @@
 "use client";
 
 import { UserButton } from "@clerk/nextjs";
-import { Sparkles } from "lucide-react";
+import { Github, Sparkles } from "lucide-react";
 import { Poppins } from "next/font/google";
 import Link from "next/link";
 
@@ -49,6 +49,15 @@ export const Navbar = ({ isPro }: NavbarProps) => {
         )}
 
         <ModeToggle />
+
+        <Link
+          href="https://github.com/sanidhyy/companion-ai"
+          target="_blank"
+          rel="noreferrer noopener"
+          className="mr-2"
+        >
+          <Github className="h-[1.2rem] w-[1.2rem] mr-2" />
+        </Link>
 
         <UserButton afterSignOutUrl="/" />
       </div>
