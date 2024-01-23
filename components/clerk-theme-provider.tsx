@@ -14,6 +14,18 @@ export const ClerkThemeProvider = ({ children }: PropsWithChildren) => {
         baseTheme: resolvedTheme === "dark" ? dark : undefined,
         layout: {
           logoPlacement: "none",
+          socialButtonsVariant: "iconButton",
+          socialButtonsPlacement: "bottom",
+          showOptionalFields: true,
+        },
+        variables: {
+          colorPrimary: resolvedTheme === "dark" ? "#262626" : "#F5F5F5",
+        },
+        elements: {
+          footerActionLink:
+            resolvedTheme === "dark"
+              ? "text-white hover:text-white/70"
+              : undefined,
         },
       }}
     >
