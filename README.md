@@ -272,7 +272,8 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 14. Open terminal in root directory. Run `npm install --legacy-peer-deps` or `yarn install --legacy-peer-deps`.
 
-15. **Run the Seed Script:**
+### 15. Run the Seed Script:
+
     In the same terminal, run the following command to execute the seed script:
 
 ```bash
@@ -281,7 +282,8 @@ node scripts/seed.js
 
 This command uses `node` to execute the JavaScript file (`scripts/seed.js`) and writes category data in mysql database.
 
-16. **Verify Data in Database:**
+### 16. Verify Data in Database:
+
     Once the script completes, check your MySQL database to ensure that the category data has been successfully seeded.
 
 17. Now app is fully configured 👍 and you can start using this app using either one of `npm run dev` or `yarn dev`.
