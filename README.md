@@ -193,8 +193,8 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 - Log in to your Clerk account or sign up if you don't have one.
 - Go to the "Projects" section and select your project.
 - Navigate to the "API Keys" tab.
-- Copy the "Publishable Key" and replace `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` in the `.env.local` file with the copied key.
-- Copy the "Secret Key" and replace `CLERK_SECRET_KEY` in the `.env.local` file with the copied key.
+- Copy the "Publishable Key" and replace `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` in the `.env` file with the copied key.
+- Copy the "Secret Key" and replace `CLERK_SECRET_KEY` in the `.env` file with the copied key.
 
 ### 6. OpenAI API Key:
 
@@ -217,7 +217,7 @@ REPLICATE_API_TOKEN=r8_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 - Visit the Cloudinary dashboard: [https://cloudinary.com](https://cloudinary.com)
 - Log in to your Cloudinary account or sign up if you don't have one.
 - Obtain your Cloud Name and Preset Name from the dashboard.
-- Update the `.env.local` file with the following entries:
+- Update the `.env` file with the following entries:
   ```env
   NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloud_name
   NEXT_PUBLIC_CLOUDINARY_PRESET_NAME=your_preset_name
@@ -228,7 +228,7 @@ REPLICATE_API_TOKEN=r8_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 - Access the Pinecone dashboard: [https://pinecone.io](https://pinecone.io)
 - Log in to your Pinecone account or create a new one.
 - Retrieve your Pinecone Index and API Key from the dashboard.
-- Update the `.env.local` file with the following entries:
+- Update the `.env` file with the following entries:
   ```env
   PINECONE_INDEX=your_companion_index
   PINECONE_API_KEY=your_pinecone_api_key
@@ -239,7 +239,7 @@ REPLICATE_API_TOKEN=r8_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 - Visit the Upstash dashboard: [https://upstash.com](https://upstash.com)
 - Log in to your Upstash account or create a new one.
 - Obtain the Upstash Redis REST URL and REST Token.
-- Update the `.env.local` file with the following entries:
+- Update the `.env` file with the following entries:
   ```env
   UPSTASH_REDIS_REST_URL=your_upstash_redis_rest_url
   UPSTASH_REDIS_REST_TOKEN=your_upstash_redis_rest_token
