@@ -245,7 +245,7 @@ REPLICATE_API_TOKEN=r8_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   UPSTASH_REDIS_REST_TOKEN=your_upstash_redis_rest_token
   ```
 
-### 11. Aiven Database URL
+### 11. Aiven Database URL:
 
 If you don't have an Aiven account, sign up [here](https://aiven.io/). After creating an account, set up a MySQL database. In the Aiven dashboard, find your database connection details and construct the `DATABASE_URL` in the following format:
 
@@ -253,7 +253,7 @@ If you don't have an Aiven account, sign up [here](https://aiven.io/). After cre
 DATABASE_URL="mysql://<username>:<password>@<host>:<port>/companion-ai?ssl-mode=REQUIRED"
 ```
 
-### 12. Stripe API and Webhook Keys
+### 12. Stripe API and Webhook Keys:
 
 For Stripe, sign up or log in to your [Stripe Dashboard](https://dashboard.stripe.com/register). Once logged in, go to Developers > API keys to find your API secret key and webhook secret. Set them as `STRIPE_API_SECRET_KEY` and `STRIPE_WEBHOOK_SECRET` in your project's environment.
 
@@ -262,7 +262,7 @@ STRIPE_API_SECRET_KEY=sk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-### 13. App Base URL
+### 13. App Base URL:
 
 Set the base URL of your application as `NEXT_PUBLIC_APP_URL` in your project's environment.
 
@@ -274,7 +274,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 ### 15. Run the Seed Script:
 
-    In the same terminal, run the following command to execute the seed script:
+In the same terminal, run the following command to execute the seed script:
 
 ```bash
 node scripts/seed.js
@@ -284,13 +284,13 @@ This command uses `node` to execute the JavaScript file (`scripts/seed.js`) and 
 
 ### 16. Verify Data in Database:
 
-    Once the script completes, check your MySQL database to ensure that the category data has been successfully seeded.
+Once the script completes, check your MySQL database to ensure that the category data has been successfully seeded.
 
 17. Now app is fully configured 👍 and you can start using this app using either one of `npm run dev` or `yarn dev`.
 
 **NOTE:** Please make sure to keep your API keys and configuration values secure and do not expose them publicly.
 
-## :camera: Screenshots:
+## :camera: Screenshots
 
 ![Modern UI/UX](/.github/images/img1.png "Modern UI/UX")
 
