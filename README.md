@@ -324,7 +324,7 @@ Useful resources and dependencies that are used in Companion.ai.
 - [@radix-ui/react-label](https://www.npmjs.com/package/@radix-ui/react-label): ^2.0.2
 - [@radix-ui/react-progress](https://www.npmjs.com/package/@radix-ui/react-progress): ^1.0.3
 - [@radix-ui/react-select](https://www.npmjs.com/package/@radix-ui/react-select): ^2.0.0
-- [@radix-ui/react-slot](https://www.npmjs.com/package/@radix-ui/react-slot): ^1.0.2- [@clerk/nextjs](https://www.npmjs.com/package/@clerk/nextjs): ^4.29.3
+- [@radix-ui/react-slot](https://www.npmjs.com/package/@radix-ui/react-slot): ^1.0.2
 - [@clerk/themes](https://www.npmjs.com/package/@clerk/themes): ^1.7.9
 - [@hookform/resolvers](https://www.npmjs.com/package/@hookform/resolvers): ^3.3.4
 - [@pinecone-database/pinecone](https://www.npmjs.com/package/@pinecone-database/pinecone): ^2.0.1
