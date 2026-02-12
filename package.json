@@ -89,7 +89,7 @@
     "@upstash/ratelimit": "^1.0.0",
     "@upstash/redis": "^1.28.1",
     "ai": "^2.2.31",
-    "axios": "^1.12.2",
+    "axios": "^1.13.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "dotenv": "^16.3.1",
