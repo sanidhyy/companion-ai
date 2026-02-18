@@ -8,15 +8,16 @@ import { companionFormSchema } from "@/schema";
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { companionId: string } },
+  { params }: { params: Promise<{ companionId: string }> },
 ) {
   try {
+    const { companionId } = await params;
     const body = (await req.json()) as z.infer<
       typeof companionFormSchema
     > | null;
     const user = await currentUser();
 
-    if (!params.companionId)
+    if (!companionId)
       return new NextResponse("Companion id is required.", { status: 400 });
 
     if (!body)
@@ -36,7 +37,7 @@ export async function PATCH(
 
     const companion = await db.companion.update({
       where: {
-        id: params.companionId,
+        id: companionId,
         userId: user.id,
       },
       data: {
@@ -59,17 +60,18 @@ export async function PATCH(
 }
 
 export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { companionId: string } },
+  _req: NextRequest,
+  { params }: { params: Promise<{ companionId: string }> },
 ) {
   try {
+    const { companionId } = await params;
     const { userId } = auth();
 
     if (!userId) return new NextResponse("Unauthorized.", { status: 401 });
 
     const companion = await db.companion.delete({
       where: {
-        id: params.companionId,
+        id: companionId,
         userId,
       },
     });

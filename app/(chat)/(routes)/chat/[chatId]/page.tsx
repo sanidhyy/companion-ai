@@ -6,19 +6,21 @@ import { db } from "@/lib/db";
 import { ChatClient } from "./_components/chat-client";
 
 type ChatIdPageProps = {
-  params: {
+  params: Promise<{
     chatId: string;
-  };
+  }>;
 };
 
 const ChatIdPage = async ({ params }: ChatIdPageProps) => {
+  const { chatId } = await params;
+
   const { userId } = auth();
 
   if (!userId) return redirectToSignIn();
 
   const companion = await db.companion.findUnique({
     where: {
-      id: params.chatId,
+      id: chatId,
     },
     include: {
       messages: {

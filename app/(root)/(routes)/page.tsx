@@ -4,18 +4,20 @@ import { SearchInput } from "@/components/search-input";
 import { db } from "@/lib/db";
 
 type HomePageProps = {
-  searchParams: {
+  searchParams: Promise<{
     categoryId: string;
     name: string;
-  };
+  }>;
 };
 
 const HomePage = async ({ searchParams }: HomePageProps) => {
+  const { categoryId, name } = await searchParams;
+
   const data = await db.companion.findMany({
     where: {
-      categoryId: searchParams.categoryId,
+      categoryId: categoryId,
       name: {
-        search: searchParams.name,
+        search: name,
       },
     },
     orderBy: {

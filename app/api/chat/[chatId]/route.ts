@@ -13,9 +13,10 @@ dotenv.config({ path: `.env` });
 
 export async function POST(
   request: Request,
-  { params }: { params: { chatId: string } },
+  { params }: { params: Promise<{ chatId: string }> },
 ) {
   try {
+    const { chatId } = await params;
     const { prompt } = await request.json();
     const user = await currentUser();
 
@@ -32,7 +33,7 @@ export async function POST(
 
     const companion = await db.companion.update({
       where: {
-        id: params.chatId,
+        id: chatId,
       },
       data: {
         messages: {
@@ -129,7 +130,7 @@ export async function POST(
 
       await db.companion.update({
         where: {
-          id: params.chatId,
+          id: chatId,
         },
         data: {
           messages: {

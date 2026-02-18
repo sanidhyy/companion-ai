@@ -4,20 +4,20 @@ import { CompanionForm } from "@/components/companion-form";
 import { db } from "@/lib/db";
 
 type CompanionIdPageProps = {
-  params: {
+  params: Promise<{
     companionId: string;
-  };
+  }>;
 };
 
 const CompanionIdPage = async ({ params }: CompanionIdPageProps) => {
+  const { companionId } = await params;
+
   const { userId } = auth();
   if (!userId) return redirectToSignIn();
 
-  // TODO: Check subscription
-
   const companion = await db.companion.findUnique({
     where: {
-      id: params.companionId,
+      id: companionId,
       userId,
     },
   });
