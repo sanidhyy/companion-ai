@@ -43,6 +43,8 @@
 
 Here is the folder structure of this app.
 
+<!--- FOLDER_STRUCTURE_START --->
+
 ```bash
 companion-ai/
   |- app/
@@ -131,6 +133,8 @@ companion-ai/
   |- tailwind.config.ts
   |- tsconfig.json
 ```
+
+<!--- FOLDER_STRUCTURE_END --->
 
 <br />
 
@@ -317,6 +321,7 @@ You might encounter some bugs while using this app. You are more than welcome to
 Useful resources and dependencies that are used in Companion.ai.
 
 - Thanks to CodeWithAntonio: https://codewithantonio.com/
+<!--- DEPENDENCIES_START --->
 - [@clerk/nextjs](https://www.npmjs.com/package/@clerk/nextjs): ^4.29.3
 - [@hookform/resolvers](https://www.npmjs.com/package/@hookform/resolvers): ^3.3.4
 - [@prisma/client](https://www.npmjs.com/package/@prisma/client): ^5.8.0
@@ -364,6 +369,7 @@ Useful resources and dependencies that are used in Companion.ai.
 - [tailwindcss-animate](https://www.npmjs.com/package/tailwindcss-animate): ^1.0.7
 - [zod](https://www.npmjs.com/package/zod): ^3.22.4
 - [zustand](https://www.npmjs.com/package/zustand): ^4.5.0
+<!--- DEPENDENCIES_END --->
 
 ## :coffee: Buy Me a Coffee
 
