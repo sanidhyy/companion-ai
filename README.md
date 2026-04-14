@@ -330,7 +330,7 @@ Useful resources and dependencies that are used in Companion.ai.
 - [eslint-config-next](https://www.npmjs.com/package/eslint-config-next): 14.0.4
 - [langchain](https://www.npmjs.com/package/langchain): ^0.1.4
 - [lucide-react](https://www.npmjs.com/package/lucide-react): ^0.574.0
-- [next](https://www.npmjs.com/package/next): 15.5.10
+- [next](https://www.npmjs.com/package/next): 15.5.15
 - [next-cloudinary](https://www.npmjs.com/package/next-cloudinary): ^5.19.0
 - [next-themes](https://www.npmjs.com/package/next-themes): ^0.4.6
 - [openai](https://www.npmjs.com/package/openai): ^6.22.0
