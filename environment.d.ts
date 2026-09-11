@@ -10,19 +10,13 @@ declare global {
       // cloudinary cloud name
       NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: string;
 
-      // pinecone vector db credentials
-      PINECONE_INDEX: string;
-      PINECONE_API_KEY: string;
-
       // upstash redis url and token
       UPSTASH_REDIS_REST_URL: string;
       UPSTASH_REDIS_REST_TOKEN: string;
 
-      // open ai key
-      OPENAI_API_KEY: string;
-
-      // replicate api token
-      REPLICATE_API_TOKEN: string;
+      // ai settings cookie encryption (user BYOK keys)
+      AI_SETTINGS_COOKIE_NAME: string;
+      VERIFICATION_SECRET: string;
 
       // stripe api secret key & webhook secret
       STRIPE_API_SECRET_KEY: string;

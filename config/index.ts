@@ -50,3 +50,7 @@ export const siteConfig: Metadata = {
 export const links = {
   sourceCode: "https://github.com/sanidhyy/companion-ai",
 } as const;
+
+export const API_KEYS_REQUIRED_MESSAGE =
+  "API keys not configured. Please add your OpenAI, Replicate, and Pinecone keys in Settings.";
+
