@@ -61,7 +61,7 @@ export const Navbar = ({ isPro }: NavbarProps) => {
           <span className="sr-only">Source Code</span>
         </Link>
 
-        <UserButton afterSignOutUrl="/sign-in" />
+        <UserButton />
       </div>
     </div>
   );

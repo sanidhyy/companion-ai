@@ -1,4 +1,4 @@
-import { auth, redirectToSignIn } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 
 import { CompanionForm } from "@/components/companion-form";
 import { db } from "@/lib/db";
@@ -12,7 +12,7 @@ type CompanionIdPageProps = {
 const CompanionIdPage = async ({ params }: CompanionIdPageProps) => {
   const { companionId } = await params;
 
-  const { userId } = auth();
+  const { userId, redirectToSignIn } = await auth();
   if (!userId) return redirectToSignIn();
 
   const companion = await db.companion.findUnique({

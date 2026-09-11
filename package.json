@@ -73,8 +73,8 @@
     }
   ],
   "dependencies": {
-    "@clerk/nextjs": "^4.31.8",
-    "@clerk/themes": "^1.7.20",
+    "@clerk/nextjs": "^7.9.2",
+    "@clerk/ui": "^1.32.3",
     "@hookform/resolvers": "^3.10.0",
     "@pinecone-database/pinecone": "^2.2.2",
     "@prisma/client": "^5.22.0",

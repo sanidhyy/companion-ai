@@ -1,11 +1,11 @@
-import { auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 
 import { db } from "./db";
 
 const DAY_IN_MS = 86_400_000;
 
 export const checkSubscription = async () => {
-  const { userId } = auth();
+  const { userId } = await auth();
 
   if (!userId) return false;
 

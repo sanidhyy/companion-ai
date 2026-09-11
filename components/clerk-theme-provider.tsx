@@ -1,7 +1,7 @@
 "use client";
 
 import { ClerkProvider } from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
+import { dark } from "@clerk/ui/themes";
 import { useTheme } from "next-themes";
 import { useEffect, type PropsWithChildren, useState } from "react";
 
@@ -18,8 +18,8 @@ export const ClerkThemeProvider = ({ children }: PropsWithChildren) => {
   return (
     <ClerkProvider
       appearance={{
-        baseTheme: resolvedTheme === "dark" ? dark : undefined,
-        layout: {
+        theme: resolvedTheme === "dark" ? dark : undefined,
+        options: {
           logoPlacement: "none",
           socialButtonsVariant: "iconButton",
           socialButtonsPlacement: "bottom",

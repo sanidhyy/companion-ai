@@ -1,4 +1,4 @@
-import { auth, currentUser } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
 import { db } from "@/lib/db";
@@ -9,7 +9,7 @@ const settingsUrl = absoluteUrl("/settings");
 
 export async function GET() {
   try {
-    const { userId } = auth();
+    const { userId } = await auth();
     const user = await currentUser();
 
     if (!user || !userId)

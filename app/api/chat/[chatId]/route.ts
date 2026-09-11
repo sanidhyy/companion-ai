@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import { StreamingTextResponse, LangChainStream } from "ai";
-import { auth, currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import { Replicate } from "langchain/llms/replicate";
 import { CallbackManager } from "langchain/callbacks";
 import { NextResponse } from "next/server";

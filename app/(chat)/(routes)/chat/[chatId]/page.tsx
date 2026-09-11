@@ -1,4 +1,4 @@
-import { auth, redirectToSignIn } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 import { db } from "@/lib/db";
@@ -14,7 +14,7 @@ type ChatIdPageProps = {
 const ChatIdPage = async ({ params }: ChatIdPageProps) => {
   const { chatId } = await params;
 
-  const { userId } = auth();
+  const { userId, redirectToSignIn } = await auth();
 
   if (!userId) return redirectToSignIn();
 

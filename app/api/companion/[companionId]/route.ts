@@ -1,4 +1,4 @@
-import { auth, currentUser } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { NextResponse, type NextRequest } from "next/server";
 import * as z from "zod";
 
@@ -65,7 +65,7 @@ export async function DELETE(
 ) {
   try {
     const { companionId } = await params;
-    const { userId } = auth();
+    const { userId } = await auth();
 
     if (!userId) return new NextResponse("Unauthorized.", { status: 401 });
 
