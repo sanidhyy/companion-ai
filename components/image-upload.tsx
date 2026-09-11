@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { CldUploadButton, type CldUploadWidgetInfo } from "next-cloudinary";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 
+import { useIsClient } from "@/hooks/use-is-client";
 import { cn } from "@/lib/utils";
 
 type ImageUploadProps = {
@@ -25,13 +25,9 @@ export const ImageUpload = ({
   disabled,
 }: ImageUploadProps) => {
   const { resolvedTheme } = useTheme();
-  const [isMounted, setIsMounted] = useState(false);
+  const isClient = useIsClient();
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) return null;
+  if (!isClient) return null;
 
   return (
     <div className="space-y-4 w-full flex flex-col justify-center items-center">

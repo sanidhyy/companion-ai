@@ -1,20 +1,17 @@
 "use client";
-import { useEffect, type PropsWithChildren, useState } from "react";
+import type { PropsWithChildren } from "react";
 
 import { Toaster } from "@/components/ui/sonner";
+import { useIsClient } from "@/hooks/use-is-client";
 
 import { ClerkThemeProvider } from "./clerk-theme-provider";
 import { ProModal } from "./pro-modal";
 import { ThemeProvider } from "./theme-provider";
 
 export const Providers = ({ children }: PropsWithChildren) => {
-  const [isMounted, setIsMounted] = useState(false);
+  const isClient = useIsClient();
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) return null;
+  if (!isClient) return null;
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

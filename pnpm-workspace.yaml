@@ -2,9 +2,9 @@ allowBuilds:
   "@clerk/shared": false
   "@prisma/client": false
   "@prisma/engines": false
-  bufferutil: set this to true or false
-  core-js: set this to true or false
+  bufferutil: false
+  core-js: false
   prisma: false
   sharp: false
   unrs-resolver: false
-  utf-8-validate: set this to true or false
+  utf-8-validate: false
