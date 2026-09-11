@@ -1,8 +1,8 @@
 <a name="readme-top"></a>
 
-# Companion.ai - A Modern Next.js 14 SaaS Companion AI Platform.
+# Companion.ai - A Modern Next.js 16 SaaS Companion AI Platform.
 
-![Companion.ai - A Modern Next.js 14 SaaS Companion AI Platform.](/.github/images/img_main.png "Companion.ai - A Modern Next.js 14 SaaS Companion AI Platform.")
+![Companion.ai - A Modern Next.js 16 SaaS Companion AI Platform.](/.github/images/img_main.png "Companion.ai - A Modern Next.js 16 SaaS Companion AI Platform.")
 
 [![Ask Me Anything!](https://flat.badgen.net/static/Ask%20me/anything?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy "Ask Me Anything!")
 [![GitHub license](https://flat.badgen.net/github/license/sanidhyy/companion-ai?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy/companion-ai/blob/main/LICENSE "GitHub license")
@@ -311,55 +311,60 @@ Useful resources and dependencies that are used in Companion.ai.
 
 - Thanks to CodeWithAntonio: https://codewithantonio.com/
 <!--- DEPENDENCIES_START --->
-- [@clerk/nextjs](https://www.npmjs.com/package/@clerk/nextjs): ^4.31.5
-- [@clerk/themes](https://www.npmjs.com/package/@clerk/themes): ^1.7.9
-- [@hookform/resolvers](https://www.npmjs.com/package/@hookform/resolvers): ^3.10.0
-- [@pinecone-database/pinecone](https://www.npmjs.com/package/@pinecone-database/pinecone): ^2.0.1
-- [@prisma/client](https://www.npmjs.com/package/@prisma/client): ^5.8.1
-- [@radix-ui/react-alert-dialog](https://www.npmjs.com/package/@radix-ui/react-alert-dialog): ^1.1.15
-- [@radix-ui/react-avatar](https://www.npmjs.com/package/@radix-ui/react-avatar): ^1.1.11
-- [@radix-ui/react-dialog](https://www.npmjs.com/package/@radix-ui/react-dialog): ^1.1.15
-- [@radix-ui/react-dropdown-menu](https://www.npmjs.com/package/@radix-ui/react-dropdown-menu): ^2.1.16
-- [@radix-ui/react-label](https://www.npmjs.com/package/@radix-ui/react-label): ^2.1.8
-- [@radix-ui/react-select](https://www.npmjs.com/package/@radix-ui/react-select): ^2.2.6
-- [@radix-ui/react-separator](https://www.npmjs.com/package/@radix-ui/react-separator): ^1.1.8
-- [@radix-ui/react-slot](https://www.npmjs.com/package/@radix-ui/react-slot): ^1.2.4
-- [@types/node](https://www.npmjs.com/package/@types/node): ^25.2.3
-- [@types/react](https://www.npmjs.com/package/@types/react): ^19.2.14
-- [@types/react-dom](https://www.npmjs.com/package/@types/react-dom): ^19.2.3
-- [@upstash/ratelimit](https://www.npmjs.com/package/@upstash/ratelimit): ^1.0.0
-- [@upstash/redis](https://www.npmjs.com/package/@upstash/redis): ^1.28.1
-- [ai](https://www.npmjs.com/package/ai): ^2.2.37
-- [autoprefixer](https://www.npmjs.com/package/autoprefixer): ^10.4.24
-- [axios](https://www.npmjs.com/package/axios): ^1.13.5
+- [@ai-sdk/react](https://www.npmjs.com/package/@ai-sdk/react): ^4.0.100
+- [@clerk/nextjs](https://www.npmjs.com/package/@clerk/nextjs): ^7.9.2
+- [@clerk/ui](https://www.npmjs.com/package/@clerk/ui): ^1.32.3
+- [@hookform/resolvers](https://www.npmjs.com/package/@hookform/resolvers): ^5.9.1
+- [@langchain/community](https://www.npmjs.com/package/@langchain/community): ^1.1.29
+- [@langchain/core](https://www.npmjs.com/package/@langchain/core): ^1.2.10
+- [@langchain/openai](https://www.npmjs.com/package/@langchain/openai): ^1.5.12
+- [@langchain/pinecone](https://www.npmjs.com/package/@langchain/pinecone): ^1.0.3
+- [@pinecone-database/pinecone](https://www.npmjs.com/package/@pinecone-database/pinecone): ^5.1.2
+- [@prisma/adapter-mariadb](https://www.npmjs.com/package/@prisma/adapter-mariadb): ^7.10.0
+- [@prisma/client](https://www.npmjs.com/package/@prisma/client): ^7.10.0
+- [@radix-ui/react-alert-dialog](https://www.npmjs.com/package/@radix-ui/react-alert-dialog): ^1.1.23
+- [@radix-ui/react-avatar](https://www.npmjs.com/package/@radix-ui/react-avatar): ^1.2.6
+- [@radix-ui/react-dialog](https://www.npmjs.com/package/@radix-ui/react-dialog): ^1.1.23
+- [@radix-ui/react-dropdown-menu](https://www.npmjs.com/package/@radix-ui/react-dropdown-menu): ^2.1.24
+- [@radix-ui/react-label](https://www.npmjs.com/package/@radix-ui/react-label): ^2.1.15
+- [@radix-ui/react-select](https://www.npmjs.com/package/@radix-ui/react-select): ^2.3.7
+- [@radix-ui/react-separator](https://www.npmjs.com/package/@radix-ui/react-separator): ^1.1.15
+- [@radix-ui/react-slot](https://www.npmjs.com/package/@radix-ui/react-slot): ^1.3.3
+- [@tailwindcss/postcss](https://www.npmjs.com/package/@tailwindcss/postcss): ^4.3.3
+- [@types/node](https://www.npmjs.com/package/@types/node): ^25.9.6
+- [@types/react](https://www.npmjs.com/package/@types/react): 19.3.0
+- [@types/react-dom](https://www.npmjs.com/package/@types/react-dom): 19.3.0
+- [@upstash/ratelimit](https://www.npmjs.com/package/@upstash/ratelimit): ^2.0.8
+- [@upstash/redis](https://www.npmjs.com/package/@upstash/redis): ^1.38.4
+- [ai](https://www.npmjs.com/package/ai): ^7.0.97
+- [axios](https://www.npmjs.com/package/axios): ^1.20.0
 - [class-variance-authority](https://www.npmjs.com/package/class-variance-authority): ^0.7.1
 - [clsx](https://www.npmjs.com/package/clsx): ^2.1.1
-- [dotenv](https://www.npmjs.com/package/dotenv): ^17.3.1
-- [eslint](https://www.npmjs.com/package/eslint): ^8
-- [eslint-config-next](https://www.npmjs.com/package/eslint-config-next): 14.0.4
-- [langchain](https://www.npmjs.com/package/langchain): ^0.1.4
-- [lucide-react](https://www.npmjs.com/package/lucide-react): ^0.574.0
-- [next](https://www.npmjs.com/package/next): 15.5.21
-- [next-cloudinary](https://www.npmjs.com/package/next-cloudinary): ^5.19.0
+- [dotenv](https://www.npmjs.com/package/dotenv): ^17.4.2
+- [eslint](https://www.npmjs.com/package/eslint): 9.39.5
+- [eslint-config-next](https://www.npmjs.com/package/eslint-config-next): 16.3.4
+- [langchain](https://www.npmjs.com/package/langchain): ^1.5.11
+- [lucide-react](https://www.npmjs.com/package/lucide-react): ^1.44.0
+- [mariadb](https://www.npmjs.com/package/mariadb): ^3.5.4
+- [next](https://www.npmjs.com/package/next): 16.3.4
+- [next-cloudinary](https://www.npmjs.com/package/next-cloudinary): ^6.18.8
 - [next-themes](https://www.npmjs.com/package/next-themes): ^0.4.6
-- [openai](https://www.npmjs.com/package/openai): ^6.22.0
-- [openai-edge](https://www.npmjs.com/package/openai-edge): ^1.2.3
-- [postcss](https://www.npmjs.com/package/postcss): ^8
-- [prisma](https://www.npmjs.com/package/prisma): ^5.8.1
-- [query-string](https://www.npmjs.com/package/query-string): ^9.3.1
-- [react](https://www.npmjs.com/package/react): ^19.2.4
-- [react-dom](https://www.npmjs.com/package/react-dom): ^19.2.4
-- [react-hook-form](https://www.npmjs.com/package/react-hook-form): ^7.71.1
-- [react-spinners](https://www.npmjs.com/package/react-spinners): ^0.17.0
-- [replicate](https://www.npmjs.com/package/replicate): ^0.25.2
-- [sonner](https://www.npmjs.com/package/sonner): ^2.0.7
-- [stripe](https://www.npmjs.com/package/stripe): ^20.3.1
-- [tailwind-merge](https://www.npmjs.com/package/tailwind-merge): ^2.2.0
-- [tailwindcss](https://www.npmjs.com/package/tailwindcss): ^3.3.0
-- [tailwindcss-animate](https://www.npmjs.com/package/tailwindcss-animate): ^1.0.7
-- [typescript](https://www.npmjs.com/package/typescript): ^5.9.3
-- [zod](https://www.npmjs.com/package/zod): ^4.3.6
-- [zustand](https://www.npmjs.com/package/zustand): ^5.0.11
+- [postcss](https://www.npmjs.com/package/postcss): ^8.5.28
+- [prisma](https://www.npmjs.com/package/prisma): ^7.10.0
+- [query-string](https://www.npmjs.com/package/query-string): ^9.5.1
+- [react](https://www.npmjs.com/package/react): 19.3.0
+- [react-dom](https://www.npmjs.com/package/react-dom): 19.3.0
+- [react-hook-form](https://www.npmjs.com/package/react-hook-form): ^7.87.0
+- [react-spinners](https://www.npmjs.com/package/react-spinners): ^0.17.1
+- [replicate](https://www.npmjs.com/package/replicate): ^1.4.0
+- [sonner](https://www.npmjs.com/package/sonner): ^2.0.8
+- [stripe](https://www.npmjs.com/package/stripe): ^22.6.2
+- [tailwind-merge](https://www.npmjs.com/package/tailwind-merge): ^3.6.0
+- [tailwindcss](https://www.npmjs.com/package/tailwindcss): ^4.3.3
+- [tw-animate-css](https://www.npmjs.com/package/tw-animate-css): ^1.4.0
+- [typescript](https://www.npmjs.com/package/typescript): ^6.0.3
+- [zod](https://www.npmjs.com/package/zod): ^4.6.1
+- [zustand](https://www.npmjs.com/package/zustand): ^5.0.15
 
 <!--- DEPENDENCIES_END --->
 

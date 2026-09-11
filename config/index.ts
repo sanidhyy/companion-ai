@@ -32,7 +32,7 @@ export const siteConfig: Metadata = {
     "prettier",
     "react-dom",
     "tailwindcss",
-    "tailwindcss-animate",
+    "tw-animate-css",
     "ui/ux",
     "js",
     "javascript",
