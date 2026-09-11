@@ -1,4 +1,4 @@
-import type { Companion } from "@prisma/client";
+import type { Companion } from "@/lib/generated/prisma/client";
 import { MessagesSquare } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";

@@ -1,6 +1,6 @@
 "use client";
 
-import type { Companion } from "@prisma/client";
+import type { Companion } from "@/lib/generated/prisma/client";
 import { type ElementRef, useEffect, useRef, useState } from "react";
 
 import { ChatMessage, type ChatMessageProps } from "./chat-message";

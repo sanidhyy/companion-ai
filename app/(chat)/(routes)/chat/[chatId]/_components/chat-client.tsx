@@ -1,6 +1,6 @@
 "use client";
 
-import type { Companion, Message } from "@prisma/client";
+import type { Companion, Message } from "@/lib/generated/prisma/client";
 import { useCompletion } from "ai/react";
 import { useRouter } from "next/navigation";
 import { type FormEvent, useState } from "react";

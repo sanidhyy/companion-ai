@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import type { Category, Companion } from "@prisma/client";
+import type { Category, Companion } from "@/lib/generated/prisma/client";
 import axios from "axios";
 import { Wand2 } from "lucide-react";
 import { useForm } from "react-hook-form";

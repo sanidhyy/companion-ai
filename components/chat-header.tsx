@@ -1,7 +1,7 @@
 "use client";
 
 import { useUser } from "@clerk/nextjs";
-import { Companion, Message } from "@prisma/client";
+import { Companion, Message } from "@/lib/generated/prisma/client";
 import axios from "axios";
 import {
   ChevronLeft,
