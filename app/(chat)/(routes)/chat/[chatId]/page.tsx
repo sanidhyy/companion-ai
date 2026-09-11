@@ -2,6 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 import { db } from "@/lib/db";
+import { hasUserApiKeys } from "@/lib/user-api-keys";
 
 import { ChatClient } from "./_components/chat-client";
 
@@ -18,30 +19,33 @@ const ChatIdPage = async ({ params }: ChatIdPageProps) => {
 
   if (!userId) return redirectToSignIn();
 
-  const companion = await db.companion.findUnique({
-    where: {
-      id: chatId,
-    },
-    include: {
-      messages: {
-        orderBy: {
-          createdAt: "desc",
+  const [companion, hasApiKeys] = await Promise.all([
+    db.companion.findUnique({
+      where: {
+        id: chatId,
+      },
+      include: {
+        messages: {
+          orderBy: {
+            createdAt: "desc",
+          },
+          where: {
+            userId,
+          },
         },
-        where: {
-          userId,
+        _count: {
+          select: {
+            messages: true,
+          },
         },
       },
-      _count: {
-        select: {
-          messages: true,
-        },
-      },
-    },
-  });
+    }),
+    hasUserApiKeys(),
+  ]);
 
   if (!companion) return redirect("/");
 
-  return <ChatClient companion={companion} />;
+  return <ChatClient companion={companion} hasApiKeys={hasApiKeys} />;
 };
 
 export default ChatIdPage;

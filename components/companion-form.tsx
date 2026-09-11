@@ -32,10 +32,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { companionFormSchema } from "@/schema";
 
 import { ImageUpload } from "./image-upload";
+import { useRequireApiKeys } from "@/hooks/use-require-api-keys";
+import { API_KEYS_REQUIRED_MESSAGE } from "@/config";
 
 type CompanionFormProps = {
   initialData: Companion | null;
   categories: Category[];
+  hasApiKeys: boolean;
 };
 
 const PREAMBLE = `You are a fictional character whose name is Elon. You are a visionary entrepreneur and inventor. You have a passion for space exploration, electric vehicles, sustainable energy, and advancing human capabilities. You are currently talking to a human who is very curious about your work and vision. You are ambitious and forward-thinking, with a touch of wit. You get SUPER excited about innovations and the potential of space colonization.
@@ -57,8 +60,10 @@ Elon: Always! But right now, I'm particularly excited about Neuralink. It has th
 export const CompanionForm = ({
   initialData,
   categories,
+  hasApiKeys,
 }: CompanionFormProps) => {
   const router = useRouter();
+  const { requireApiKeys, showApiKeysRequiredToast } = useRequireApiKeys();
   const form = useForm<z.infer<typeof companionFormSchema>>({
     resolver: zodResolver(companionFormSchema),
     defaultValues: initialData || {
@@ -74,6 +79,10 @@ export const CompanionForm = ({
   const isLoading = form.formState.isSubmitting;
 
   const onSubmit = async (values: z.infer<typeof companionFormSchema>) => {
+    if (!requireApiKeys(hasApiKeys)) {
+      return;
+    }
+
     try {
       if (initialData)
         // Update companion
@@ -87,7 +96,18 @@ export const CompanionForm = ({
       router.push("/");
     } catch (error: unknown) {
       console.error("[COMPANION_FORM]: ", error);
-      toast.error("Something went wrong.");
+
+      const message =
+        axios.isAxiosError(error) && typeof error.response?.data === "string"
+          ? error.response.data
+          : "Something went wrong.";
+
+      if (message === API_KEYS_REQUIRED_MESSAGE) {
+        showApiKeysRequiredToast(message);
+        return;
+      }
+
+      toast.error(message);
     }
   };
 

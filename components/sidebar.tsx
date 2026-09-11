@@ -4,6 +4,7 @@ import { Home, Plus, Settings } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
 import { useProModal } from "@/hooks/use-pro-modal";
+import { useRequireApiKeys } from "@/hooks/use-require-api-keys";
 import { cn } from "@/lib/utils";
 
 const ROUTES = [
@@ -29,15 +30,21 @@ const ROUTES = [
 
 type SidebarProps = {
   isPro: boolean;
+  hasApiKeys: boolean;
 };
 
-export const Sidebar = ({ isPro }: SidebarProps) => {
+export const Sidebar = ({ isPro, hasApiKeys }: SidebarProps) => {
   const proModal = useProModal();
+  const { requireApiKeys } = useRequireApiKeys();
   const pathname = usePathname();
   const router = useRouter();
 
   const onNavigate = (url: string, pro: boolean) => {
     if (pro && !isPro) return proModal.onOpen();
+
+    if (pro && !requireApiKeys(hasApiKeys)) {
+      return;
+    }
 
     return router.push(url);
   };

@@ -6,9 +6,13 @@ import { Sidebar } from "./sidebar";
 
 type MobileSidebarProps = {
   isPro: boolean;
+  hasApiKeys: boolean;
 };
 
-export const MobileSidebar = ({ isPro = false }: MobileSidebarProps) => {
+export const MobileSidebar = ({
+  isPro = false,
+  hasApiKeys = false,
+}: MobileSidebarProps) => {
   return (
     <Sheet>
       <SheetTrigger className="md:hidden pr-4">
@@ -17,7 +21,7 @@ export const MobileSidebar = ({ isPro = false }: MobileSidebarProps) => {
       </SheetTrigger>
 
       <SheetContent side="left" className="p-0 bg-secondary pt-10 w-32">
-        <Sidebar isPro={isPro} />
+        <Sidebar isPro={isPro} hasApiKeys={hasApiKeys} />
       </SheetContent>
     </Sheet>
   );

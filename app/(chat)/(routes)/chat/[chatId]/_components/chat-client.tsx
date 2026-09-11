@@ -9,6 +9,9 @@ import { ChatForm } from "@/components/chat-form";
 import { ChatHeader } from "@/components/chat-header";
 import type { ChatMessageProps } from "@/components/chat-message";
 import { ChatMessages } from "@/components/chat-messages";
+import { useRequireApiKeys } from "@/hooks/use-require-api-keys";
+import { API_KEYS_REQUIRED_MESSAGE } from "@/config";
+import { toast } from "sonner";
 
 type ChatClientProps = {
   companion: Companion & {
@@ -17,10 +20,12 @@ type ChatClientProps = {
       messages: number;
     };
   };
+  hasApiKeys: boolean;
 };
 
-export const ChatClient = ({ companion }: ChatClientProps) => {
+export const ChatClient = ({ companion, hasApiKeys }: ChatClientProps) => {
   const router = useRouter();
+  const { requireApiKeys, showApiKeysRequiredToast } = useRequireApiKeys();
   const [messages, setMessages] = useState<ChatMessageProps[]>(
     companion.messages,
   );
@@ -40,9 +45,29 @@ export const ChatClient = ({ companion }: ChatClientProps) => {
 
         router.refresh();
       },
+      onError: (error) => {
+        setMessages((current) => current.slice(0, -1));
+
+        if (error.message === API_KEYS_REQUIRED_MESSAGE) {
+          showApiKeysRequiredToast(error.message);
+          return;
+        }
+
+        toast.error(error.message || "Something went wrong. Please try again.");
+      },
     });
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!requireApiKeys(hasApiKeys)) {
+      return;
+    }
+
+    if (!input.trim()) {
+      return;
+    }
+
     const userMessage: ChatMessageProps = {
       role: "user",
       content: input,

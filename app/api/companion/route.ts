@@ -3,7 +3,9 @@ import { NextResponse, type NextRequest } from "next/server";
 import * as z from "zod";
 
 import { db } from "@/lib/db";
+import { API_KEYS_REQUIRED_MESSAGE } from "@/config";
 import { checkSubscription } from "@/lib/subscription";
+import { hasUserApiKeys } from "@/lib/user-api-keys";
 import { companionFormSchema } from "@/schema";
 
 export async function POST(req: NextRequest) {
@@ -26,7 +28,13 @@ export async function POST(req: NextRequest) {
 
     const isPro = await checkSubscription();
 
-    if (!isPro) new NextResponse("Pro subscription required.", { status: 403 });
+    if (!isPro) {
+      return new NextResponse("Pro subscription required.", { status: 403 });
+    }
+
+    if (!(await hasUserApiKeys())) {
+      return new NextResponse(API_KEYS_REQUIRED_MESSAGE, { status: 400 });
+    }
 
     const companion = await db.companion.create({
       data: {
