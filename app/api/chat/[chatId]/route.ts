@@ -1,15 +1,10 @@
-import dotenv from "dotenv";
-import { StreamingTextResponse, LangChainStream } from "ai";
 import { currentUser } from "@clerk/nextjs/server";
-import { Replicate } from "langchain/llms/replicate";
-import { CallbackManager } from "langchain/callbacks";
+import { Replicate } from "@langchain/community/llms/replicate";
 import { NextResponse } from "next/server";
 
+import { db } from "@/lib/db";
 import { MemoryManager } from "@/lib/memory";
 import { rateLimit } from "@/lib/rate-limit";
-import { db } from "@/lib/db";
-
-dotenv.config({ path: `.env` });
 
 export async function POST(
   request: Request,
@@ -51,10 +46,10 @@ export async function POST(
     }
 
     const name = companion.id;
-    const companion_file_name = name + ".txt";
+    const companionFileName = `${name}.txt`;
 
     const companionKey = {
-      companionName: name!,
+      companionName: name,
       userId: user.id,
       modelName: "llama2-13b",
     };
@@ -64,27 +59,21 @@ export async function POST(
     if (records.length === 0) {
       await memoryManager.seedChatHistory(companion.seed, "\n\n", companionKey);
     }
-    await memoryManager.writeToHistory("User: " + prompt + "\n", companionKey);
-
-    // Query Pinecone
+    await memoryManager.writeToHistory(`User: ${prompt}\n`, companionKey);
 
     const recentChatHistory =
       await memoryManager.readLatestHistory(companionKey);
 
-    // Right now the preamble is included in the similarity search, but that
-    // shouldn't be an issue
-
     const similarDocs = await memoryManager.vectorSearch(
       recentChatHistory,
-      companion_file_name,
+      companionFileName,
     );
 
     let relevantHistory = "";
-    if (!!similarDocs && similarDocs.length !== 0) {
+    if (similarDocs && similarDocs.length !== 0) {
       relevantHistory = similarDocs.map((doc) => doc.pageContent).join("\n");
     }
-    const { handlers } = LangChainStream();
-    // Call Replicate for inference
+
     const model = new Replicate({
       model:
         "a16z-infra/llama-2-13b-chat:df7690f1994d94e96ad9d568eac121aecf50684a0b0963b25a41cc40061269e5",
@@ -92,16 +81,11 @@ export async function POST(
         max_length: 2048,
       },
       apiKey: process.env.REPLICATE_API_TOKEN,
-      callbackManager: CallbackManager.fromHandlers(handlers),
     });
 
-    // Turn verbose on for debugging
-    model.verbose = true;
-
     const resp = String(
-      await model
-        .call(
-          `
+      await model.invoke(
+        `
         ONLY generate plain sentences without prefix of who is speaking. DO NOT use ${companion.name}: prefix. 
 
         ${companion.instructions}
@@ -111,22 +95,15 @@ export async function POST(
 
 
         ${recentChatHistory}\n${companion.name}:`,
-        )
-        .catch(console.error),
+      ),
     );
 
     const cleaned = resp.replaceAll(",", "");
     const chunks = cleaned.split("\n");
-    const response = chunks[0];
+    const response = chunks[0]?.trim() ?? "";
 
-    await memoryManager.writeToHistory("" + response.trim(), companionKey);
-    var Readable = require("stream").Readable;
-
-    let s = new Readable();
-    s.push(response);
-    s.push(null);
-    if (response !== undefined && response.length > 1) {
-      memoryManager.writeToHistory("" + response.trim(), companionKey);
+    if (response.length > 1) {
+      await memoryManager.writeToHistory(response, companionKey);
 
       await db.companion.update({
         where: {
@@ -135,7 +112,7 @@ export async function POST(
         data: {
           messages: {
             create: {
-              content: response.trim(),
+              content: response,
               role: "system",
               userId: user.id,
             },
@@ -144,8 +121,11 @@ export async function POST(
       });
     }
 
-    return new StreamingTextResponse(s);
+    return new Response(response, {
+      headers: { "Content-Type": "text/plain; charset=utf-8" },
+    });
   } catch (error) {
+    console.error("[CHAT_POST]: ", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }

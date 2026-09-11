@@ -1,7 +1,7 @@
-import { Redis } from "@upstash/redis";
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
+import { OpenAIEmbeddings } from "@langchain/openai";
+import { PineconeStore } from "@langchain/pinecone";
 import { Pinecone } from "@pinecone-database/pinecone";
-import { PineconeStore } from "langchain/vectorstores/pinecone";
+import { Redis } from "@upstash/redis";
 
 export type CompanionKey = {
   companionName: string;
@@ -16,34 +16,28 @@ export class MemoryManager {
 
   public constructor() {
     this.history = Redis.fromEnv();
-    this.vectorDbClient = new Pinecone();
-  }
-
-  public init() {
-    if (this.vectorDbClient instanceof Pinecone) {
-      this.vectorDbClient = new Pinecone({
-        apiKey: process.env.PINECONE_API_KEY!,
-      });
-    }
+    this.vectorDbClient = new Pinecone({
+      apiKey: process.env.PINECONE_API_KEY!,
+    });
   }
 
   public async vectorSearch(
     recentChatHistory: string,
     companionFileName: string,
   ) {
-    const pineconeClient = <Pinecone>this.vectorDbClient;
-    const pineconeIndex = pineconeClient.Index(process.env.PINECONE_INDEX!);
+    const pineconeIndex = this.vectorDbClient.Index(process.env.PINECONE_INDEX!);
 
     const vectorStore = await PineconeStore.fromExistingIndex(
-      new OpenAIEmbeddings({ openAIApiKey: process.env.OPENAI_API_KEY }),
+      new OpenAIEmbeddings({ apiKey: process.env.OPENAI_API_KEY }),
       { pineconeIndex },
     );
 
     const similarDocs = await vectorStore
       .similaritySearch(recentChatHistory, 3, { fileName: companionFileName })
-      .catch((error) =>
-        console.error("Failed to get vector search results: ", error),
-      );
+      .catch((error) => {
+        console.error("Failed to get vector search results: ", error);
+        return undefined;
+      });
 
     return similarDocs;
   }
@@ -51,7 +45,6 @@ export class MemoryManager {
   public static async getInstance(): Promise<MemoryManager> {
     if (!MemoryManager.instance) {
       MemoryManager.instance = new MemoryManager();
-      await MemoryManager.instance.init();
     }
 
     return MemoryManager.instance;
@@ -94,7 +87,7 @@ export class MemoryManager {
   }
 
   public async seedChatHistory(
-    seedContent: String,
+    seedContent: string,
     delimiter: string = "\n",
     companionKey: CompanionKey,
   ) {

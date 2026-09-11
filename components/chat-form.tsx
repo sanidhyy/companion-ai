@@ -1,4 +1,3 @@
-import type { ChatRequestOptions } from "ai";
 import { SendHorizonal } from "lucide-react";
 import type { FormEvent, ChangeEvent } from "react";
 
@@ -10,10 +9,7 @@ type ChatFormProps = {
   handleInputChange: (
     e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
   ) => void;
-  onSubmit: (
-    e: FormEvent<HTMLFormElement>,
-    chatRequestOptions?: ChatRequestOptions | undefined,
-  ) => void;
+  onSubmit: (e: FormEvent<HTMLFormElement>) => void;
   isLoading: boolean;
 };
 

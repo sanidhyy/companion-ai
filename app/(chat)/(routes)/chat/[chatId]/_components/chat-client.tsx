@@ -1,7 +1,7 @@
 "use client";
 
 import type { Companion, Message } from "@/lib/generated/prisma/client";
-import { useCompletion } from "ai/react";
+import { useCompletion } from "@ai-sdk/react";
 import { useRouter } from "next/navigation";
 import { type FormEvent, useState } from "react";
 
@@ -28,6 +28,7 @@ export const ChatClient = ({ companion }: ChatClientProps) => {
   const { input, isLoading, handleInputChange, handleSubmit, setInput } =
     useCompletion({
       api: `/api/chat/${companion.id}`,
+      streamProtocol: "text",
       onFinish: (_prompt, completion) => {
         const systemMessage: ChatMessageProps = {
           role: "system",
