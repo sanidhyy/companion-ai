@@ -44,7 +44,6 @@
 Here is the folder structure of this app.
 
 <!--- FOLDER_STRUCTURE_START --->
-
 ```bash
 companion-ai/
   |- app/
@@ -87,6 +86,7 @@ companion-ai/
     |-- use-debounce.ts
     |-- use-is-client.ts
     |-- use-pro-modal.ts
+    |-- use-require-api-keys.ts
   |- lib/
     |-- db.ts
     |-- encryption.ts
@@ -120,7 +120,6 @@ companion-ai/
   |- proxy.ts
   |- tsconfig.json
 ```
-
 <!--- FOLDER_STRUCTURE_END --->
 
 <br />
