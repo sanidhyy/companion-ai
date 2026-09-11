@@ -83,6 +83,7 @@ companion-ai/
     |-- index.ts
   |- hooks/
     |-- use-debounce.ts
+    |-- use-is-client.ts
     |-- use-pro-modal.ts
   |- lib/
     |-- db.ts
@@ -97,22 +98,22 @@ companion-ai/
   |- schema/
     |-- index.ts
   |- scripts/
-    |-- seed.js
+    |-- seed.mjs
   |- .env.example
   |- .env/.env.local
-  |- .eslintrc.json
   |- .gitignore
-  |- .npmrc
   |- components.json
+  |- css.d.ts
   |- environment.d.ts
-  |- middleware.ts
+  |- eslint.config.mjs
   |- netlify.toml
-  |- next.config.js
+  |- next.config.ts
   |- package.json
   |- pnpm-lock.yaml
   |- pnpm-workspace.yaml
-  |- postcss.config.js
-  |- tailwind.config.ts
+  |- postcss.config.mjs
+  |- prisma.config.ts
+  |- proxy.ts
   |- tsconfig.json
 ```
 <!--- FOLDER_STRUCTURE_END --->
