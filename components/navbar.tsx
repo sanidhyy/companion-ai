@@ -1,7 +1,7 @@
 "use client";
 
 import { UserButton } from "@clerk/nextjs";
-import { FolderGit2, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { Poppins } from "next/font/google";
 import Link from "next/link";
 
@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 
 import { MobileSidebar } from "./mobile-sidebar";
 import { ModeToggle } from "./mode-toggle";
+import Image from "next/image";
 
 const font = Poppins({
   weight: "600",
@@ -57,7 +58,22 @@ export const Navbar = ({ isPro }: NavbarProps) => {
           rel="noreferrer noopener"
           className="mr-2"
         >
-          <FolderGit2 className="h-[1.2rem] w-[1.2rem] mr-2" />
+          <Image
+            src="/github-white.svg"
+            alt="GitHub"
+            className="hidden dark:block"
+            width={24}
+            height={24}
+          />
+
+          <Image
+            src="/github-black.svg"
+            alt="GitHub"
+            className="block dark:hidden"
+            width={24}
+            height={24}
+          />
+
           <span className="sr-only">Source Code</span>
         </Link>
 
