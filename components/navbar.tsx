@@ -1,7 +1,7 @@
 "use client";
 
 import { UserButton } from "@clerk/nextjs";
-import { Github, Sparkles } from "lucide-react";
+import { FolderGit2, Sparkles } from "lucide-react";
 import { Poppins } from "next/font/google";
 import Link from "next/link";
 
@@ -57,7 +57,7 @@ export const Navbar = ({ isPro }: NavbarProps) => {
           rel="noreferrer noopener"
           className="mr-2"
         >
-          <Github className="h-[1.2rem] w-[1.2rem] mr-2" />
+          <FolderGit2 className="h-[1.2rem] w-[1.2rem] mr-2" />
           <span className="sr-only">Source Code</span>
         </Link>
 

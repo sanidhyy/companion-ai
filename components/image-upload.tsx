@@ -1,6 +1,9 @@
 "use client";
 
-import { CldUploadButton, type CldUploadWidgetInfo } from "next-cloudinary";
+import {
+  CldUploadButton,
+  type CloudinaryUploadWidgetInfo,
+} from "next-cloudinary";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 
@@ -13,10 +16,14 @@ type ImageUploadProps = {
   disabled?: boolean;
 };
 
-const instanceOfCldUploadWidgetInfo = (
-  object: any,
-): object is CldUploadWidgetInfo => {
-  return "secure_url" in object;
+const instanceOfCloudinaryUploadWidgetInfo = (
+  object: unknown,
+): object is CloudinaryUploadWidgetInfo => {
+  return (
+    typeof object === "object" &&
+    object !== null &&
+    "secure_url" in object
+  );
 };
 
 export const ImageUpload = ({
@@ -33,15 +40,13 @@ export const ImageUpload = ({
     <div className="space-y-4 w-full flex flex-col justify-center items-center">
       <CldUploadButton
         className={cn(disabled && "outline-none ring-0 select-none")}
-        onUpload={(result) => {
+        onSuccess={(result) => {
           if (disabled) return;
 
-          if (!instanceOfCldUploadWidgetInfo(result.info))
+          if (!instanceOfCloudinaryUploadWidgetInfo(result.info))
             return console.error("[IMAGE_UPLOAD]: ", result.info);
 
-          const info: CldUploadWidgetInfo = result.info;
-
-          onChange(info.secure_url);
+          onChange(result.info.secure_url);
         }}
         options={{
           maxFiles: 1,
