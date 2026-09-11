@@ -37,6 +37,6 @@
   ],
   "exclude": [
     "node_modules",
-    "scripts/seed.js"
+    "scripts/seed.mjs"
   ]
 }
