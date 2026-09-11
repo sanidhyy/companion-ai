@@ -44,6 +44,7 @@
 Here is the folder structure of this app.
 
 <!--- FOLDER_STRUCTURE_START --->
+
 ```bash
 companion-ai/
   |- app/
@@ -114,6 +115,7 @@ companion-ai/
   |- tailwind.config.ts
   |- tsconfig.json
 ```
+
 <!--- FOLDER_STRUCTURE_END --->
 
 <br />
@@ -254,7 +256,7 @@ Set the base URL of your application as `NEXT_PUBLIC_APP_URL` in your project's 
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
-14. Open terminal in root directory. Run `npm install --legacy-peer-deps` or `yarn install --legacy-peer-deps`.
+14. Open terminal in root directory. Run `npm install --legacy-peer-deps` or `pnpm install --legacy-peer-deps`.
 
 ### 15. Run the Seed Script:
 
@@ -270,7 +272,7 @@ This command uses `node` to execute the JavaScript file (`scripts/seed.js`) and 
 
 Once the script completes, check your MySQL database to ensure that the category data has been successfully seeded.
 
-17. Now app is fully configured 👍 and you can start using this app using either one of `npm run dev` or `yarn dev`.
+17. Now app is fully configured 👍 and you can start using this app using either one of `npm run dev` or `pnpm dev`.
 
 **NOTE:** Please make sure to keep your API keys and configuration values secure and do not expose them publicly.
 
