@@ -3,8 +3,10 @@ import { Replicate } from "@langchain/community/llms/replicate";
 import { NextResponse } from "next/server";
 
 import { db } from "@/lib/db";
+import { API_KEYS_REQUIRED_MESSAGE } from "@/config";
 import { MemoryManager } from "@/lib/memory";
 import { rateLimit } from "@/lib/rate-limit";
+import { getUserApiKeys } from "@/lib/user-api-keys";
 
 export async function POST(
   request: Request,
@@ -17,6 +19,12 @@ export async function POST(
 
     if (!user || !user.firstName || !user.id) {
       return new NextResponse("Unauthorized", { status: 401 });
+    }
+
+    const apiKeys = await getUserApiKeys();
+
+    if (!apiKeys) {
+      return new NextResponse(API_KEYS_REQUIRED_MESSAGE, { status: 400 });
     }
 
     const identifier = request.url + "-" + user.id;
@@ -67,6 +75,11 @@ export async function POST(
     const similarDocs = await memoryManager.vectorSearch(
       recentChatHistory,
       companionFileName,
+      {
+        openaiApiKey: apiKeys.openaiApiKey,
+        pineconeApiKey: apiKeys.pineconeApiKey,
+        pineconeIndex: apiKeys.pineconeIndex,
+      },
     );
 
     let relevantHistory = "";
@@ -76,11 +89,11 @@ export async function POST(
 
     const model = new Replicate({
       model:
-        "a16z-infra/llama-2-13b-chat:df7690f1994d94e96ad9d568eac121aecf50684a0b0963b25a41cc40061269e5",
+        "meta/llama-2-13b-chat:6b4da803a2382c08868c5af10a523892f38e2de1aafb2ee55b020d9efef2fdb8",
       input: {
         max_length: 2048,
       },
-      apiKey: process.env.REPLICATE_API_TOKEN,
+      apiKey: apiKeys.replicateApiToken,
     });
 
     const resp = String(

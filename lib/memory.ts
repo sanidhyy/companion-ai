@@ -3,32 +3,39 @@ import { PineconeStore } from "@langchain/pinecone";
 import { Pinecone } from "@pinecone-database/pinecone";
 import { Redis } from "@upstash/redis";
 
+import type { UserApiKeys } from "@/lib/user-api-keys";
+
 export type CompanionKey = {
   companionName: string;
   modelName: string;
   userId: string;
 };
 
+export type VectorSearchCredentials = Pick<
+  UserApiKeys,
+  "openaiApiKey" | "pineconeApiKey" | "pineconeIndex"
+>;
+
 export class MemoryManager {
   private static instance: MemoryManager;
   private history: Redis;
-  private vectorDbClient: Pinecone;
 
   public constructor() {
     this.history = Redis.fromEnv();
-    this.vectorDbClient = new Pinecone({
-      apiKey: process.env.PINECONE_API_KEY!,
-    });
   }
 
   public async vectorSearch(
     recentChatHistory: string,
     companionFileName: string,
+    credentials: VectorSearchCredentials,
   ) {
-    const pineconeIndex = this.vectorDbClient.Index(process.env.PINECONE_INDEX!);
+    const vectorDbClient = new Pinecone({
+      apiKey: credentials.pineconeApiKey,
+    });
+    const pineconeIndex = vectorDbClient.Index(credentials.pineconeIndex);
 
     const vectorStore = await PineconeStore.fromExistingIndex(
-      new OpenAIEmbeddings({ apiKey: process.env.OPENAI_API_KEY }),
+      new OpenAIEmbeddings({ apiKey: credentials.openaiApiKey }),
       { pineconeIndex },
     );
 
