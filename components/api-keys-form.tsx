@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import axios from "axios";
 import { EyeIcon, EyeOffIcon, Trash2Icon } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -24,6 +26,14 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
   Form,
   FormControl,
   FormDescription,
@@ -42,6 +52,15 @@ type ApiKeysFormProps = {
 };
 
 type SecretFieldName = "openaiApiKey" | "replicateApiToken" | "pineconeApiKey";
+
+const PINECONE_INDEX_STEPS = [
+  "Open Pinecone and create a new index (any name, e.g. companion).",
+  "Enable Custom settings.",
+  "Set Vector type to Dense.",
+  "Set Dimension to 1536.",
+  "Set Metric to cosine.",
+  "Keep Capacity mode as Serverless, then create the index.",
+] as const;
 
 export const ApiKeysForm = ({ initialValues }: ApiKeysFormProps) => {
   const router = useRouter();
@@ -277,7 +296,52 @@ export const ApiKeysForm = ({ initialValues }: ApiKeysFormProps) => {
                 />
               </FormControl>
               <FormDescription>
-                Name of the Pinecone index that stores companion embeddings.
+                Name of the Pinecone index that stores companion embeddings.{" "}
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <button
+                      type="button"
+                      className="text-primary underline underline-offset-2 font-medium opacity-100 hover:opacity-75"
+                    >
+                      How to create an index?
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="max-h-[90vh] max-w-2xl overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle>Create a Pinecone index</DialogTitle>
+                      <DialogDescription>
+                        <VisuallyHidden>
+                          Companion needs a dense index with 1536 dimensions and
+                          cosine similarity for OpenAI embeddings.
+                        </VisuallyHidden>
+                      </DialogDescription>
+                    </DialogHeader>
+
+                    <ol className="list-decimal space-y-2 pl-5 text-sm text-muted-foreground">
+                      {PINECONE_INDEX_STEPS.map((step) => (
+                        <li key={step}>{step}</li>
+                      ))}
+                    </ol>
+
+                    <div className="overflow-hidden rounded-md border bg-muted/30">
+                      <Image
+                        src="/pinecone-setup.png"
+                        alt="Pinecone create index form with Custom settings, Dense vector type, dimension 1536, and cosine metric"
+                        width={1280}
+                        height={900}
+                        className="h-auto w-full dark:hidden block"
+                      />
+
+                      <Image
+                        src="/pinecone-setup-dark.png"
+                        alt="Pinecone create index form with Custom settings, Dense vector type, dimension 1536, and cosine metric"
+                        width={1280}
+                        height={900}
+                        className="h-auto w-full dark:block hidden"
+                      />
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </FormDescription>
               <FormMessage />
             </FormItem>
