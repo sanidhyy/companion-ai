@@ -311,6 +311,7 @@ Useful resources and dependencies that are used in Companion.ai.
 - [@radix-ui/react-select](https://www.npmjs.com/package/@radix-ui/react-select): ^2.3.7
 - [@radix-ui/react-separator](https://www.npmjs.com/package/@radix-ui/react-separator): ^1.1.15
 - [@radix-ui/react-slot](https://www.npmjs.com/package/@radix-ui/react-slot): ^1.3.3
+- [@radix-ui/react-visually-hidden](https://www.npmjs.com/package/@radix-ui/react-visually-hidden): ^1.2.11
 - [@tailwindcss/postcss](https://www.npmjs.com/package/@tailwindcss/postcss): ^4.3.3
 - [@types/node](https://www.npmjs.com/package/@types/node): ^25.9.6
 - [@types/react](https://www.npmjs.com/package/@types/react): 19.3.0
