@@ -32,7 +32,7 @@ export const Navbar = ({ isPro, hasApiKeys }: NavbarProps) => {
       <div className="flex items-center">
         <MobileSidebar isPro={isPro} hasApiKeys={hasApiKeys} />
 
-        <Link href="/">
+        <Link prefetch href="/">
           <h1
             className={cn(
               "hidden md:block text-xl md:text-3xl font-bold text-primary",

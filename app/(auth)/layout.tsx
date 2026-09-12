@@ -12,7 +12,7 @@ const font = Poppins({
 const AuthLayout = ({ children }: PropsWithChildren) => {
   return (
     <div className="flex flex-col space-y-6 items-center justify-center h-full">
-      <Link href="/">
+      <Link prefetch href="/">
         <h1
           className={cn(
             "hidden md:block text-xl md:text-3xl font-bold text-primary",
