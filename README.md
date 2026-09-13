@@ -44,7 +44,6 @@
 Here is the folder structure of this app.
 
 <!--- FOLDER_STRUCTURE_START --->
-
 ```bash
 companion-ai/
   |- app/
@@ -123,7 +122,6 @@ companion-ai/
   |- proxy.ts
   |- tsconfig.json
 ```
-
 <!--- FOLDER_STRUCTURE_END --->
 
 <br />
@@ -341,6 +339,7 @@ Useful resources and dependencies that are used in Companion.ai.
 - [next](https://www.npmjs.com/package/next): 16.3.4
 - [next-cloudinary](https://www.npmjs.com/package/next-cloudinary): ^6.18.8
 - [next-themes](https://www.npmjs.com/package/next-themes): ^0.4.6
+- [openai](https://www.npmjs.com/package/openai): ^7.15.0
 - [postcss](https://www.npmjs.com/package/postcss): ^8.5.28
 - [prisma](https://www.npmjs.com/package/prisma): ^7.10.0
 - [query-string](https://www.npmjs.com/package/query-string): ^9.5.1
@@ -352,6 +351,7 @@ Useful resources and dependencies that are used in Companion.ai.
 - [stripe](https://www.npmjs.com/package/stripe): ^22.6.2
 - [tailwind-merge](https://www.npmjs.com/package/tailwind-merge): ^3.6.0
 - [tailwindcss](https://www.npmjs.com/package/tailwindcss): ^4.3.3
+- [tsx](https://www.npmjs.com/package/tsx): ^4.23.13
 - [tw-animate-css](https://www.npmjs.com/package/tw-animate-css): ^1.4.0
 - [typescript](https://www.npmjs.com/package/typescript): ^6.0.3
 - [zod](https://www.npmjs.com/package/zod): ^4.6.1
