@@ -23,7 +23,9 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
         },
       },
       orderBy: {
-        createdAt: "desc",
+        messages: {
+          _count: "desc",
+        },
       },
       include: {
         _count: {
