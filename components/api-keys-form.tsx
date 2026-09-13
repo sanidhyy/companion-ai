@@ -194,7 +194,7 @@ export const ApiKeysForm = ({ initialValues }: ApiKeysFormProps) => {
                 <FormControl>
                   <Input
                     type={visibleFields.pineconeApiKey ? "text" : "password"}
-                    placeholder="pcsk_•••••••••••••••••••••••••••••••"
+                    placeholder="pcsk_•••••••••••••••••••••••••••••••••"
                     className="pr-12"
                     disabled={isLoading}
                     {...field}
