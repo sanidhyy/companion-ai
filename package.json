@@ -23,6 +23,7 @@
     "@langchain/core": "^1.2.10",
     "@langchain/openai": "^1.5.12",
     "@langchain/pinecone": "^1.0.3",
+    "@netlify/functions": "^6.0.0",
     "@pinecone-database/pinecone": "^5.1.2",
     "@prisma/adapter-mariadb": "^7.10.0",
     "@prisma/client": "^7.10.0",

@@ -44,6 +44,7 @@
 Here is the folder structure of this app.
 
 <!--- FOLDER_STRUCTURE_START --->
+
 ```bash
 companion-ai/
   |- app/
@@ -105,6 +106,9 @@ companion-ai/
     |-- db.ts
     |-- seed-categories.ts
     |-- seed-companions.ts
+  |- netlify/
+    |-- functions/
+      |-- redis-keepalive.ts
   |- .env.example
   |- .env/.env.local
   |- .gitignore
@@ -122,6 +126,7 @@ companion-ai/
   |- proxy.ts
   |- tsconfig.json
 ```
+
 <!--- FOLDER_STRUCTURE_END --->
 
 <br />
@@ -308,6 +313,7 @@ Useful resources and dependencies that are used in Companion.ai.
 - [@langchain/core](https://www.npmjs.com/package/@langchain/core): ^1.2.10
 - [@langchain/openai](https://www.npmjs.com/package/@langchain/openai): ^1.5.12
 - [@langchain/pinecone](https://www.npmjs.com/package/@langchain/pinecone): ^1.0.3
+- [@netlify/functions](https://www.npmjs.com/package/@netlify/functions): ^6.0.0
 - [@pinecone-database/pinecone](https://www.npmjs.com/package/@pinecone-database/pinecone): ^5.1.2
 - [@prisma/adapter-mariadb](https://www.npmjs.com/package/@prisma/adapter-mariadb): ^7.10.0
 - [@prisma/client](https://www.npmjs.com/package/@prisma/client): ^7.10.0

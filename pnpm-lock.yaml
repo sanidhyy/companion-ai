@@ -29,6 +29,9 @@ importers:
       '@langchain/pinecone':
         specifier: ^1.0.3
         version: 1.0.3(@langchain/core@1.2.10(openai@7.15.0(undici@7.29.1)(ws@7.5.13(bufferutil@4.1.0)(utf-8-validate@6.0.6))(zod@4.6.1))(ws@7.5.13(bufferutil@4.1.0)(utf-8-validate@6.0.6)))(@pinecone-database/pinecone@5.1.2)
+      '@netlify/functions':
+        specifier: ^6.0.0
+        version: 6.0.0
       '@pinecone-database/pinecone':
         specifier: ^5.1.2
         version: 5.1.2
@@ -979,6 +982,14 @@ packages:
     peerDependencies:
       '@emnapi/core': ^1.7.1 || ^2.0.0-alpha.4
       '@emnapi/runtime': ^1.7.1 || ^2.0.0-alpha.4
+
+  '@netlify/functions@6.0.0':
+    resolution: {integrity: sha512-Pee+FoFnAtdejTkl62a7mZxj6Wx4eqVNuYyDc5T4XPJN9GaAWaUf4cZQFlf2m4Fqq0HoghjtcPKo+BZviVPPKA==}
+    engines: {node: '>=22.12.0'}
+
+  '@netlify/types@3.0.0':
+    resolution: {integrity: sha512-zRCidsQgI4CZWrZB/kmwdPf0QbSNljakfNSLizFvrsSA3UcUrTWSBNMVKmZnob92/8ESeUN0ewXLOlffJU+ATQ==}
+    engines: {node: '>=22.12.0'}
 
   '@next/env@16.3.4':
     resolution: {integrity: sha512-cjWZnUUa6jZq2kFaNe/ZyJdZonOZ/QoN0Zka2nz/FLOrfx14pQuM9c5RaSVkWMqgdt4ksgPAMWPyHSs/CyV48Q==}
@@ -6104,6 +6115,12 @@ snapshots:
       '@tybys/wasm-util': 0.10.3
     optional: true
 
+  '@netlify/functions@6.0.0':
+    dependencies:
+      '@netlify/types': 3.0.0
+
+  '@netlify/types@3.0.0': {}
+
   '@next/env@16.3.4': {}
 
   '@next/eslint-plugin-next@16.3.4(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))':
@@ -9678,7 +9695,7 @@ snapshots:
       '@babel/types': 7.29.8
       flow-enums-runtime: 0.0.6
       invariant: 2.2.4
-      metro-symbolicate: 0.87.0
+      metro-symbolicate: 0.87.0(supports-color@8.1.1)
       nullthrows: 1.1.1
       ob1: 0.87.0
       source-map: 0.5.7
@@ -9686,7 +9703,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  metro-symbolicate@0.87.0:
+  metro-symbolicate@0.87.0(supports-color@8.1.1):
     dependencies:
       flow-enums-runtime: 0.0.6
       invariant: 2.2.4
@@ -9694,6 +9711,8 @@ snapshots:
       nullthrows: 1.1.1
       source-map: 0.5.7
       vlq: 1.0.1
+    transitivePeerDependencies:
+      - supports-color
 
   metro-transform-plugins@0.87.0(supports-color@8.1.1):
     dependencies:
@@ -9757,7 +9776,7 @@ snapshots:
       metro-resolver: 0.87.0
       metro-runtime: 0.87.0
       metro-source-map: 0.87.0(supports-color@8.1.1)
-      metro-symbolicate: 0.87.0
+      metro-symbolicate: 0.87.0(supports-color@8.1.1)
       metro-transform-plugins: 0.87.0(supports-color@8.1.1)
       metro-transform-worker: 0.87.0(bufferutil@4.1.0)(supports-color@8.1.1)(utf-8-validate@6.0.6)
       mime-types: 3.0.2
