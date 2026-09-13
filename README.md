@@ -182,7 +182,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 ### 6. AI Settings Cookie Secrets:
 
-Generate two separate secrets with `openssl rand -hex 32` and set them as `AI_SETTINGS_COOKIE_NAME` and `VERIFICATION_SECRET`. These encrypt and name the httpOnly cookie that stores each user's OpenAI, Replicate, and Pinecone credentials from **Settings**.
+Generate two separate secrets with `openssl rand -hex 32` and set them as `AI_SETTINGS_COOKIE_NAME` and `VERIFICATION_SECRET`. These encrypt and name the httpOnly cookie that stores each user's OpenAI and Pinecone credentials from **Settings**.
 
 ```env
 AI_SETTINGS_COOKIE_NAME=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -296,7 +296,6 @@ Useful resources and dependencies that are used in Companion.ai.
 - [@clerk/nextjs](https://www.npmjs.com/package/@clerk/nextjs): ^7.9.2
 - [@clerk/ui](https://www.npmjs.com/package/@clerk/ui): ^1.32.3
 - [@hookform/resolvers](https://www.npmjs.com/package/@hookform/resolvers): ^5.9.1
-- [@langchain/community](https://www.npmjs.com/package/@langchain/community): ^1.1.29
 - [@langchain/core](https://www.npmjs.com/package/@langchain/core): ^1.2.10
 - [@langchain/openai](https://www.npmjs.com/package/@langchain/openai): ^1.5.12
 - [@langchain/pinecone](https://www.npmjs.com/package/@langchain/pinecone): ^1.0.3
@@ -338,7 +337,6 @@ Useful resources and dependencies that are used in Companion.ai.
 - [react-dom](https://www.npmjs.com/package/react-dom): 19.3.0
 - [react-hook-form](https://www.npmjs.com/package/react-hook-form): ^7.87.0
 - [react-spinners](https://www.npmjs.com/package/react-spinners): ^0.17.1
-- [replicate](https://www.npmjs.com/package/replicate): ^1.4.0
 - [sonner](https://www.npmjs.com/package/sonner): ^2.0.8
 - [stripe](https://www.npmjs.com/package/stripe): ^22.6.2
 - [tailwind-merge](https://www.npmjs.com/package/tailwind-merge): ^3.6.0

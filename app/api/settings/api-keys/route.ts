@@ -16,18 +16,6 @@ async function validateOpenAIKey(apiKey: string) {
   }
 }
 
-async function validateReplicateToken(apiToken: string) {
-  const response = await fetch("https://api.replicate.com/v1/account", {
-    headers: {
-      Authorization: `Bearer ${apiToken}`,
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error("Invalid Replicate API token.");
-  }
-}
-
 async function validatePinecone(apiKey: string, indexName: string) {
   const response = await fetch(
     `https://api.pinecone.io/indexes/${encodeURIComponent(indexName)}`,
@@ -62,13 +50,11 @@ export async function POST(request: Request) {
       );
     }
 
-    const { openaiApiKey, replicateApiToken, pineconeApiKey, pineconeIndex } =
-      parsed.data;
+    const { openaiApiKey, pineconeApiKey, pineconeIndex } = parsed.data;
 
     try {
       await Promise.all([
         validateOpenAIKey(openaiApiKey),
-        validateReplicateToken(replicateApiToken),
         validatePinecone(pineconeApiKey, pineconeIndex),
       ]);
     } catch (error) {
@@ -79,7 +65,6 @@ export async function POST(request: Request) {
 
     await setUserApiKeys({
       openaiApiKey,
-      replicateApiToken,
       pineconeApiKey,
       pineconeIndex,
     });

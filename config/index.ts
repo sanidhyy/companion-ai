@@ -52,5 +52,5 @@ export const links = {
 } as const;
 
 export const API_KEYS_REQUIRED_MESSAGE =
-  "API keys not configured. Please add your OpenAI, Replicate, and Pinecone keys in Settings.";
+  "API keys not configured. Please add your OpenAI and Pinecone keys in Settings.";
 

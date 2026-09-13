@@ -1,5 +1,5 @@
 import { currentUser } from "@clerk/nextjs/server";
-import { Replicate } from "@langchain/community/llms/replicate";
+import { ChatOpenAI } from "@langchain/openai";
 import { NextResponse } from "next/server";
 
 import { db } from "@/lib/db";
@@ -59,7 +59,7 @@ export async function POST(
     const companionKey = {
       companionName: name,
       userId: user.id,
-      modelName: "llama2-13b",
+      modelName: "gpt-4.1",
     };
     const memoryManager = await MemoryManager.getInstance();
 
@@ -87,18 +87,13 @@ export async function POST(
       relevantHistory = similarDocs.map((doc) => doc.pageContent).join("\n");
     }
 
-    const model = new Replicate({
-      model:
-        "meta/llama-2-13b-chat:6b4da803a2382c08868c5af10a523892f38e2de1aafb2ee55b020d9efef2fdb8",
-      input: {
-        max_length: 2048,
-      },
-      apiKey: apiKeys.replicateApiToken,
+    const model = new ChatOpenAI({
+      model: "gpt-4.1",
+      apiKey: apiKeys.openaiApiKey,
     });
 
-    const resp = String(
-      await model.invoke(
-        `
+    const aiMessage = await model.invoke(
+      `
         ONLY generate plain sentences without prefix of who is speaking. DO NOT use ${companion.name}: prefix. 
 
         ${companion.instructions}
@@ -108,8 +103,12 @@ export async function POST(
 
 
         ${recentChatHistory}\n${companion.name}:`,
-      ),
     );
+
+    const resp =
+      typeof aiMessage.content === "string"
+        ? aiMessage.content
+        : String(aiMessage.content);
 
     const cleaned = resp.replaceAll(",", "");
     const chunks = cleaned.split("\n");

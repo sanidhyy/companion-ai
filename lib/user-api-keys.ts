@@ -7,7 +7,6 @@ import { getSecureCookieName } from "@/lib/utils";
 
 export type UserApiKeys = {
   openaiApiKey: string;
-  replicateApiToken: string;
   pineconeApiKey: string;
   pineconeIndex: string;
 };
@@ -28,8 +27,6 @@ function isValidKeys(value: unknown): value is UserApiKeys {
   return (
     typeof keys.openaiApiKey === "string" &&
     keys.openaiApiKey.trim().length > 0 &&
-    typeof keys.replicateApiToken === "string" &&
-    keys.replicateApiToken.trim().length > 0 &&
     typeof keys.pineconeApiKey === "string" &&
     keys.pineconeApiKey.trim().length > 0 &&
     typeof keys.pineconeIndex === "string" &&

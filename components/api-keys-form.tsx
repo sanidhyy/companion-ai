@@ -51,7 +51,7 @@ type ApiKeysFormProps = {
   initialValues: ApiKeysFormValues;
 };
 
-type SecretFieldName = "openaiApiKey" | "replicateApiToken" | "pineconeApiKey";
+type SecretFieldName = "openaiApiKey" | "pineconeApiKey";
 
 const PINECONE_INDEX_STEPS = [
   "Open Pinecone and create a new index (any name, e.g. companion).",
@@ -68,7 +68,6 @@ export const ApiKeysForm = ({ initialValues }: ApiKeysFormProps) => {
     Record<SecretFieldName, boolean>
   >({
     openaiApiKey: false,
-    replicateApiToken: false,
     pineconeApiKey: false,
   });
   const [isRemoving, setIsRemoving] = useState(false);
@@ -77,7 +76,6 @@ export const ApiKeysForm = ({ initialValues }: ApiKeysFormProps) => {
     resolver: zodResolver(apiKeysFormSchema),
     defaultValues: {
       openaiApiKey: initialValues.openaiApiKey ?? "",
-      replicateApiToken: initialValues.replicateApiToken ?? "",
       pineconeApiKey: initialValues.pineconeApiKey ?? "",
       pineconeIndex: initialValues.pineconeIndex ?? "",
     },
@@ -111,7 +109,6 @@ export const ApiKeysForm = ({ initialValues }: ApiKeysFormProps) => {
       await axios.delete("/api/settings/api-keys");
       form.reset({
         openaiApiKey: "",
-        replicateApiToken: "",
         pineconeApiKey: "",
         pineconeIndex: "",
       });
@@ -180,54 +177,7 @@ export const ApiKeysForm = ({ initialValues }: ApiKeysFormProps) => {
                 >
                   OpenAI
                 </Link>
-                . Used for embeddings in companion memory.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="replicateApiToken"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Replicate API Token</FormLabel>
-              <div className="relative">
-                <FormControl>
-                  <Input
-                    type={visibleFields.replicateApiToken ? "text" : "password"}
-                    placeholder="r8_•••••••••••••••••••••••••••••••"
-                    className="pr-12"
-                    disabled={isLoading}
-                    {...field}
-                    value={field.value ?? ""}
-                  />
-                </FormControl>
-                <button
-                  disabled={isLoading}
-                  type="button"
-                  className="absolute inset-y-0 right-1 flex cursor-pointer items-center rounded-full p-3 text-muted-foreground outline-none ring-primary focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  onClick={() => toggleVisibility("replicateApiToken")}
-                >
-                  {visibleFields.replicateApiToken ? (
-                    <EyeOffIcon className="size-5" />
-                  ) : (
-                    <EyeIcon className="size-5" />
-                  )}
-                </button>
-              </div>
-              <FormDescription>
-                Get your API token from{" "}
-                <Link
-                  href="https://replicate.com/account/api-tokens"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-primary underline underline-offset-2 opacity-100 hover:opacity-75"
-                >
-                  Replicate
-                </Link>
-                . Used to generate companion replies.
+                . Used for companion replies and embeddings in memory.
               </FormDescription>
               <FormMessage />
             </FormItem>

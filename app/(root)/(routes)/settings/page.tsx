@@ -28,16 +28,14 @@ const SettingsPage = async () => {
         <div>
           <h3 className="text-lg font-medium">API Keys</h3>
           <p className="text-sm text-muted-foreground">
-            Provide your own OpenAI, Replicate, and Pinecone credentials to use
-            chat. Keys are stored encrypted in your browser and expire after 30
-            days.
+            Provide your own OpenAI and Pinecone credentials to use chat. Keys
+            are stored encrypted in your browser and expire after 30 days.
           </p>
         </div>
 
         <ApiKeysForm
           initialValues={{
             openaiApiKey: apiKeys?.openaiApiKey ?? "",
-            replicateApiToken: apiKeys?.replicateApiToken ?? "",
             pineconeApiKey: apiKeys?.pineconeApiKey ?? "",
             pineconeIndex: apiKeys?.pineconeIndex ?? "",
           }}

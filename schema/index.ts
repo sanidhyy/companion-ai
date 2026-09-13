@@ -27,11 +27,6 @@ export const apiKeysFormSchema = z.object({
     .trim()
     .min(12, { message: "Invalid OpenAI API key." })
     .startsWith("sk-", { message: "Invalid OpenAI API key." }),
-  replicateApiToken: z
-    .string()
-    .trim()
-    .min(12, { message: "Invalid Replicate API token." })
-    .startsWith("r8_", { message: "Invalid Replicate API token." }),
   pineconeApiKey: z
     .string()
     .trim()
