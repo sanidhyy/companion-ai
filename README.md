@@ -44,7 +44,6 @@
 Here is the folder structure of this app.
 
 <!--- FOLDER_STRUCTURE_START --->
-
 ```bash
 companion-ai/
   |- app/
@@ -97,6 +96,8 @@ companion-ai/
     |-- subscription.ts
     |-- user-api-keys.ts
     |-- utils.ts
+  |- netlify/
+    |-- functions/
   |- prisma/
     |-- schema.prisma
   |- public/
@@ -106,9 +107,6 @@ companion-ai/
     |-- db.ts
     |-- seed-categories.ts
     |-- seed-companions.ts
-  |- netlify/
-    |-- functions/
-      |-- redis-keepalive.ts
   |- .env.example
   |- .env/.env.local
   |- .gitignore
@@ -126,7 +124,6 @@ companion-ai/
   |- proxy.ts
   |- tsconfig.json
 ```
-
 <!--- FOLDER_STRUCTURE_END --->
 
 <br />
