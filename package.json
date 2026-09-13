@@ -10,6 +10,9 @@
     "db:studio": "prisma studio",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
+    "db:seed": "pnpm db:seed:categories && pnpm db:seed:companions",
+    "db:seed:categories": "tsx scripts/seed-categories.ts",
+    "db:seed:companions": "tsx scripts/seed-companions.ts",
     "postinstall": "pnpm run db:generate"
   },
   "dependencies": {
@@ -67,6 +70,7 @@
     "postcss": "^8.5.28",
     "prisma": "^7.10.0",
     "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.13",
     "typescript": "^6.0.3"
   },
   "author": {

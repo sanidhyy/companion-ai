@@ -24,6 +24,10 @@ declare global {
 
       // next public app url
       NEXT_PUBLIC_APP_URL: string;
+
+      // companion seed owner (`pnpm db:seed:companions`)
+      SEED_USER_ID?: string;
+      SEED_USER_NAME?: string;
     }
   }
 }

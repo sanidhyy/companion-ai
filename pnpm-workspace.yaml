@@ -4,6 +4,7 @@ allowBuilds:
   "@prisma/engines": false
   bufferutil: false
   core-js: false
+  esbuild: false
   prisma: false
   sharp: false
   unrs-resolver: false

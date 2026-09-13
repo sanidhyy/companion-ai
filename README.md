@@ -44,6 +44,7 @@
 Here is the folder structure of this app.
 
 <!--- FOLDER_STRUCTURE_START --->
+
 ```bash
 companion-ai/
   |- app/
@@ -102,7 +103,9 @@ companion-ai/
   |- schema/
     |-- index.ts
   |- scripts/
-    |-- seed.mjs
+    |-- db.ts
+    |-- seed-categories.ts
+    |-- seed-companions.ts
   |- .env.example
   |- .env/.env.local
   |- .gitignore
@@ -120,6 +123,7 @@ companion-ai/
   |- proxy.ts
   |- tsconfig.json
 ```
+
 <!--- FOLDER_STRUCTURE_END --->
 
 <br />
@@ -168,6 +172,10 @@ STRIPE_WEBHOOK_SECRET=whsec_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 # next public app url
 NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+# companion seed owner (required for `pnpm db:seed:companions`)
+SEED_USER_ID=user_xxxxxxxxxxxxxxxxxxxxxxxx
+SEED_USER_NAME=YourName
 
 ```
 
@@ -238,19 +246,22 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 12. Open terminal in root directory. Run `npm install --legacy-peer-deps` or `pnpm install --legacy-peer-deps`.
 
-### 13. Run the Seed Script:
+### 13. Run the Seed Scripts:
 
-In the same terminal, run the following command to execute the seed script:
+Seed categories first, then optional starter companions:
 
 ```bash
-node scripts/seed.js
+pnpm db:seed:categories
+pnpm db:seed:companions
 ```
 
-This command uses `node` to execute the JavaScript file (`scripts/seed.js`) and writes category data in mysql database.
+Or run both: `pnpm db:seed`.
+
+Set both `SEED_USER_ID` (Clerk user id) and `SEED_USER_NAME` in `.env` before running `db:seed:companions`.
 
 ### 14. Verify Data in Database:
 
-Once the script completes, check your MySQL database to ensure that the category data has been successfully seeded.
+Once the scripts complete, check your MySQL database to ensure that the category and companion data has been successfully seeded.
 
 15. Now app is fully configured 👍 and you can start using this app using either one of `npm run dev` or `pnpm dev`.
 
