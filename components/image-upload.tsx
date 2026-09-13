@@ -1,5 +1,3 @@
-"use client";
-
 import {
   CldUploadButton,
   type CloudinaryUploadWidgetInfo,
@@ -20,9 +18,7 @@ const instanceOfCloudinaryUploadWidgetInfo = (
   object: unknown,
 ): object is CloudinaryUploadWidgetInfo => {
   return (
-    typeof object === "object" &&
-    object !== null &&
-    "secure_url" in object
+    typeof object === "object" && object !== null && "secure_url" in object
   );
 };
 
