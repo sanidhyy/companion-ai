@@ -147,7 +147,7 @@ export const ApiKeysForm = ({ initialValues }: ApiKeysFormProps) => {
                 <FormControl>
                   <Input
                     type={visibleFields.openaiApiKey ? "text" : "password"}
-                    placeholder="sk-•••••••••••••••••••••••••••••••"
+                    placeholder="sk-•••••••••••••••••••••••••••••••••••"
                     className="pr-12"
                     disabled={isLoading}
                     {...field}
