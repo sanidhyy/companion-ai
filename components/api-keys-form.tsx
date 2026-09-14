@@ -168,7 +168,7 @@ export const ApiKeysForm = ({ initialValues }: ApiKeysFormProps) => {
                 </button>
               </div>
               <FormDescription>
-                Get your API key from{" "}
+                Get your API Key from{" "}
                 <Link
                   href="https://platform.openai.com/account/api-keys"
                   target="_blank"
@@ -177,7 +177,16 @@ export const ApiKeysForm = ({ initialValues }: ApiKeysFormProps) => {
                 >
                   OpenAI
                 </Link>
-                . Used for companion replies and embeddings in memory.
+                . Make sure your account has sufficient{" "}
+                <Link
+                  href="https://platform.openai.com/settings/organization/billing/credit-grants"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-primary underline underline-offset-2 opacity-100 hover:opacity-75"
+                >
+                  credit grants
+                </Link>
+                .
               </FormDescription>
               <FormMessage />
             </FormItem>
