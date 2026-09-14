@@ -105,14 +105,11 @@ export async function POST(
         ${recentChatHistory}\n${companion.name}:`,
     );
 
-    const resp =
+    const response = (
       typeof aiMessage.content === "string"
         ? aiMessage.content
-        : String(aiMessage.content);
-
-    const cleaned = resp.replaceAll(",", "");
-    const chunks = cleaned.split("\n");
-    const response = chunks[0]?.trim() ?? "";
+        : String(aiMessage.content)
+    ).trim();
 
     if (response.length > 1) {
       await memoryManager.writeToHistory(response, companionKey);
