@@ -339,7 +339,7 @@ Useful resources and dependencies that are used in Companion.ai.
 - [langchain](https://www.npmjs.com/package/langchain): ^1.5.11
 - [lucide-react](https://www.npmjs.com/package/lucide-react): ^1.44.0
 - [mariadb](https://www.npmjs.com/package/mariadb): ^3.5.4
-- [next](https://www.npmjs.com/package/next): 16.3.4
+- [next](https://www.npmjs.com/package/next): 16.4.1
 - [next-cloudinary](https://www.npmjs.com/package/next-cloudinary): ^6.18.8
 - [next-themes](https://www.npmjs.com/package/next-themes): ^0.4.6
 - [openai](https://www.npmjs.com/package/openai): ^7.15.0
