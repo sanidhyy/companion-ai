@@ -30,8 +30,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(@langchain/core@1.2.10(openai@7.15.0(undici@7.29.1)(ws@7.5.13(bufferutil@4.1.0)(utf-8-validate@6.0.6))(zod@4.6.1))(ws@7.5.13(bufferutil@4.1.0)(utf-8-validate@6.0.6)))(@pinecone-database/pinecone@5.1.2)
       '@netlify/functions':
-        specifier: ^6.0.0
-        version: 6.0.0
+        specifier: ^6.1.1
+        version: 6.1.1
       '@pinecone-database/pinecone':
         specifier: ^5.1.2
         version: 5.1.2
@@ -983,12 +983,20 @@ packages:
       '@emnapi/core': ^1.7.1 || ^2.0.0-alpha.4
       '@emnapi/runtime': ^1.7.1 || ^2.0.0-alpha.4
 
-  '@netlify/functions@6.0.0':
-    resolution: {integrity: sha512-Pee+FoFnAtdejTkl62a7mZxj6Wx4eqVNuYyDc5T4XPJN9GaAWaUf4cZQFlf2m4Fqq0HoghjtcPKo+BZviVPPKA==}
+  '@netlify/cache@4.2.1':
+    resolution: {integrity: sha512-10RASHobwpQ3DKKptwPen6zxpbNUBCE+5WWFufOlRwyfNjwhY95h3XuvPFLNQMuROcZY9Yiw++Xww+qkcLkZtw==}
     engines: {node: '>=22.12.0'}
 
-  '@netlify/types@3.0.0':
-    resolution: {integrity: sha512-zRCidsQgI4CZWrZB/kmwdPf0QbSNljakfNSLizFvrsSA3UcUrTWSBNMVKmZnob92/8ESeUN0ewXLOlffJU+ATQ==}
+  '@netlify/functions@6.1.1':
+    resolution: {integrity: sha512-hTZaFcNZG+ntoAkDBRv+TMN6Nns6+mVAcMGtmXR3lCkhryxydpb2AUZDOz0zx9Zzb750R9UhoqcmfV06og9wFQ==}
+    engines: {node: '>=22.12.0'}
+
+  '@netlify/runtime-utils@3.0.1':
+    resolution: {integrity: sha512-PythjseqdFTvaTK28IiRZ/w0YOZKgyBDxiXuCNEwCBxidnKZ7najsOMtstwwzmsRtfHbmXHOB5NLaGCnvnvBTg==}
+    engines: {node: '>=22.12.0'}
+
+  '@netlify/types@3.3.1':
+    resolution: {integrity: sha512-LwPy3VpwMTETniJEgLr67yP8Rt8eORZaQ/NwVXhOOkv9q1F2SANSoJbfkhEmyLpwQ/aoPTAi0bULBDlFHXwEQA==}
     engines: {node: '>=22.12.0'}
 
   '@next/env@16.4.1':
@@ -6115,11 +6123,18 @@ snapshots:
       '@tybys/wasm-util': 0.10.3
     optional: true
 
-  '@netlify/functions@6.0.0':
+  '@netlify/cache@4.2.1':
     dependencies:
-      '@netlify/types': 3.0.0
+      '@netlify/runtime-utils': 3.0.1
 
-  '@netlify/types@3.0.0': {}
+  '@netlify/functions@6.1.1':
+    dependencies:
+      '@netlify/cache': 4.2.1
+      '@netlify/types': 3.3.1
+
+  '@netlify/runtime-utils@3.0.1': {}
+
+  '@netlify/types@3.3.1': {}
 
   '@next/env@16.4.1': {}
 
