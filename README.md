@@ -330,7 +330,7 @@ Useful resources and dependencies that are used in Companion.ai.
 - [@upstash/ratelimit](https://www.npmjs.com/package/@upstash/ratelimit): ^2.0.8
 - [@upstash/redis](https://www.npmjs.com/package/@upstash/redis): ^1.38.4
 - [ai](https://www.npmjs.com/package/ai): ^7.0.97
-- [axios](https://www.npmjs.com/package/axios): ^1.20.0
+- [axios](https://www.npmjs.com/package/axios): ^1.21.1
 - [class-variance-authority](https://www.npmjs.com/package/class-variance-authority): ^0.7.1
 - [clsx](https://www.npmjs.com/package/clsx): ^2.1.1
 - [dotenv](https://www.npmjs.com/package/dotenv): ^17.4.2
