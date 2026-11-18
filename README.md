@@ -345,7 +345,7 @@ Useful resources and dependencies that are used in Companion.ai.
 - [openai](https://www.npmjs.com/package/openai): ^7.15.0
 - [postcss](https://www.npmjs.com/package/postcss): ^8.5.28
 - [prisma](https://www.npmjs.com/package/prisma): ^7.10.0
-- [query-string](https://www.npmjs.com/package/query-string): ^9.5.1
+- [query-string](https://www.npmjs.com/package/query-string): ^10.0.0
 - [react](https://www.npmjs.com/package/react): 19.3.0
 - [react-dom](https://www.npmjs.com/package/react-dom): 19.3.0
 - [react-hook-form](https://www.npmjs.com/package/react-hook-form): ^7.87.0
